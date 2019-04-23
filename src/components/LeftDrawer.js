@@ -6,6 +6,8 @@ import MenuItem from 'material-ui/MenuItem';
 import {Link} from 'react-router';
 import Avatar from 'material-ui/Avatar';
 
+const userImage = '../images/devinsg.png';
+
 const LeftDrawer = (props) => {
   let { navDrawerOpen } = props;
 
@@ -54,7 +56,7 @@ const LeftDrawer = (props) => {
           Material Admin
         </div>
         <div style={styles.avatar.div}>
-          <Avatar src="http://www.material-ui.com/images/uxceo-128.jpg"
+          <Avatar src={userImage}
                   size={50}
                   style={styles.avatar.icon}/>
           <span style={styles.avatar.span}>{props.username}</span>

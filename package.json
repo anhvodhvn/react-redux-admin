@@ -1,6 +1,6 @@
 {
   "name": "react-material-admin-template",
-  "version": "0.0.1",
+  "version": "1.0.2",
   "description": "Admin template using React and Material-UI",
   "engines": {
     "npm": ">=3"
@@ -21,7 +21,7 @@
     "test:watch": "npm run test -- --watch",
     "open:cover": "npm run test:cover && open coverage/index.html"
   },
-  "author": "Rafael Zeffa",
+  "author": "Anh Vo Duy",
   "license": "MIT",
   "dependencies": {
     "flexboxgrid": "6.3.1",
