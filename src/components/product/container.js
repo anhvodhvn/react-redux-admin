@@ -6,20 +6,16 @@ class Products extends Component {
         super(props);
         this.state = {
             products: []
-        }
+        };
     }
 
-    // async componentDidMount() {
-    //     try
-    //     {
-    //         let res = await api.get('/product/list');
-    //         let { products } = res.data;
-    //         this.setState({ products: products });
-    //     }
-    //     catch (err) {
-    //         throw err;
-    //     }
-    // }
+    componentDidMount() {
+        return api.get('/product/list')
+        .then((res) => {
+            let { products } = res.data;
+            this.setState({ products: products });
+        });
+    }
 
     render() {
         let { products } = this.state;
