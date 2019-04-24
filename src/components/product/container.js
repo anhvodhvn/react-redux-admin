@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import {Link} from 'react-router';
+import { Link } from 'react-router';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentCreate from 'material-ui/svg-icons/content/create';
