@@ -49,8 +49,8 @@ class Products extends Component {
                         {
                             (Array.isArray(products) && products.length) ?
                             products.map((item, index) =>
-                                <TableRow key={index}>
-                                    <TableRowColumn style={styles.columns.id}>{index}</TableRowColumn>
+                                <TableRow key={index+1}>
+                                    <TableRowColumn style={styles.columns.id}>{index+1}</TableRowColumn>
                                     <TableRowColumn style={styles.columns.name}>{item.ProductName}</TableRowColumn>
                                     <TableRowColumn style={styles.columns.price}>{item.Price}</TableRowColumn>
                                     <TableRowColumn style={styles.columns.category}>{item.Category ? item.Category.Name : ''}</TableRowColumn>
