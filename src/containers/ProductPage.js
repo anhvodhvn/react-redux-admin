@@ -2,10 +2,10 @@ import React from 'react';
 import PageBase from '../components/PageBase';
 import Products from '../components/product';
 
-const TablePage = () => {
+const ProductPage = () => {
   return (
     <PageBase title="Table Page"
-              navigation="Application / Table Page">
+              navigation="Application / Product Page">
 
       <Products />
 
@@ -13,4 +13,4 @@ const TablePage = () => {
   );
 };
 
-export default TablePage;
+export default ProductPage;
