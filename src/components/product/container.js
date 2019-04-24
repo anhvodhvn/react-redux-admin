@@ -1,5 +1,13 @@
 import React, { Component, PropTypes } from 'react';
+import {Link} from 'react-router';
+import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentCreate from 'material-ui/svg-icons/content/create';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import { grey200, pink500 } from 'material-ui/styles/colors';
+
 import api from '../../api/api';
+import styles from './styles';
 
 class Products extends Component {
     constructor(props) {
@@ -18,35 +26,54 @@ class Products extends Component {
     }
 
     render() {
-        let { products } = this.state;
+        const { products } = this.state;
         return (
             <div>
-                <h1>Products</h1>
-                {
-                    (Array.isArray(products) && products.length) ?
-                    <ul>
+                <Link to="/form" >
+                    <FloatingActionButton style={styles.floatingActionButton} backgroundColor={pink500}>
+                    <ContentAdd />
+                    </FloatingActionButton>
+                </Link>
+
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                        <TableHeaderColumn style={styles.columns.id}>ID</TableHeaderColumn>
+                        <TableHeaderColumn style={styles.columns.name}>Name</TableHeaderColumn>
+                        <TableHeaderColumn style={styles.columns.price}>Price</TableHeaderColumn>
+                        <TableHeaderColumn style={styles.columns.category}>Category</TableHeaderColumn>
+                        <TableHeaderColumn style={styles.columns.edit}>Edit</TableHeaderColumn>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
                         {
-                            products.map((u, i) => 
-                            <li key={i}>
-                                <div>
-                                    {u.ProductName}
-                                </div>
-                                <div>
-                                    {u.ImageUrl}
-                                </div>
-                            </li>)
+                            (Array.isArray(products) && products.length) ?
+                            products.map((item, index) =>
+                                <TableRow key={index}>
+                                    <TableRowColumn style={styles.columns.id}>{index}</TableRowColumn>
+                                    <TableRowColumn style={styles.columns.name}>{item.ProductName}</TableRowColumn>
+                                    <TableRowColumn style={styles.columns.price}>{item.Price}</TableRowColumn>
+                                    <TableRowColumn style={styles.columns.category}>{item.Category ? item.Category.Name : ''}</TableRowColumn>
+                                    <TableRowColumn style={styles.columns.edit}>
+                                        <Link className="button" to="/form">
+                                        <FloatingActionButton zDepth={0} mini={true} backgroundColor={grey200} iconStyle={styles.editButton}>
+                                            <ContentCreate  />
+                                        </FloatingActionButton>
+                                        </Link>
+                                    </TableRowColumn>
+                                </TableRow>
+                            )
+                            : null
                         }
-                    </ul>
-                    : null
-                }
+                    </TableBody>
+                </Table>
             </div>
         );
     }
 }
 
 Products.propTypes = {
-    products: PropTypes.array,
-    getProductList: PropTypes.func
+    products: PropTypes.array
 };
 
 export default Products;

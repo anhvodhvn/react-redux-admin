@@ -10,42 +10,13 @@ import Products from '../components/product';
 import Data from '../data';
 
 const TablePage = () => {
-
-  const styles = {
-    floatingActionButton: {
-      margin: 0,
-      top: 'auto',
-      right: 20,
-      bottom: 20,
-      left: 'auto',
-      position: 'fixed',
-    },
-    editButton: {
-      fill: grey500
-    },
-    columns: {
-      id: {
-        width: '10%'
-      },
-      name: {
-        width: '40%'
-      },
-      price: {
-        width: '20%'
-      },
-      category: {
-        width: '20%'
-      },
-      edit: {
-        width: '10%'
-      }
-    }
-  };
-
   return (
     <PageBase title="Table Page"
               navigation="Application / Table Page">
 
+      <Products />
+
+      {/*
       <div>
         <Link to="/form" >
           <FloatingActionButton style={styles.floatingActionButton} backgroundColor={pink500}>
@@ -85,9 +56,7 @@ const TablePage = () => {
           </TableBody>
         </Table>    
       </div>
-      <div>
-        <Products />
-      </div>
+      */}
     </PageBase>
   );
 };
