@@ -2,6 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -12,6 +13,12 @@ import 'flexboxgrid/css/flexboxgrid.css';
 
 injectTapEventPlugin();
 
+import configureStore from './store/configureStore';
+const store = new configureStore();
+
 ReactDOM.render(
-    <Router routes={routes} history={browserHistory} />, document.getElementById('app')
+    <Provider store={store}>
+        <Router routes={routes} history={browserHistory} />
+    </Provider>,
+    document.getElementById('app')
 );
