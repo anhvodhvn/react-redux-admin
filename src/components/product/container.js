@@ -1,32 +1,28 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentCreate from 'material-ui/svg-icons/content/create';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import { grey200, pink500 } from 'material-ui/styles/colors';
 
-import api from '../../api/api';
+import { getProductList } from '../../actions/product';
 import styles from './styles';
 
 class Products extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            products: []
-        };
     }
 
     componentDidMount() {
-        return api.get('/product/list')
-        .then((res) => {
-            let { products } = res.data;
-            this.setState({ products: products });
-        });
+        let { getProductList } = this.props;
+        return getProductList();
     }
 
     render() {
-        const { products } = this.state;
+        let { products } = this.props;
         return (
             <div>
                 <Link to="/form" >
@@ -73,7 +69,21 @@ class Products extends Component {
 }
 
 Products.propTypes = {
-    products: PropTypes.array
+    products: PropTypes.array,
+    getProductList: PropTypes.func
 };
 
-export default Products;
+const mapStateToProps = state => {
+    const { productList } = state.productReducer;
+    return {
+        products: productList
+    };
+};
+
+const mapDispatchToProps = dispatch => (
+    bindActionCreators({
+        getProductList
+    }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
