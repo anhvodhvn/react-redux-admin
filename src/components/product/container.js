@@ -29,7 +29,7 @@ class Products extends Component {
         let { products } = this.props;
         return (
             <div>
-                <Link to="/form" >
+                <Link to="/product/add" >
                     <FloatingActionButton style={styles.floatingActionButton} backgroundColor={pink500}>
                     <ContentAdd />
                     </FloatingActionButton>
