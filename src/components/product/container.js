@@ -11,6 +11,10 @@ import { grey200, pink500 } from 'material-ui/styles/colors';
 import { getProductList } from '../../actions/product';
 import styles from './styles';
 
+const LinkEdit = (id) => {
+    return `/product/edit/${id}`;
+};
+
 class Products extends Component {
     constructor(props) {
         super(props);
@@ -51,7 +55,7 @@ class Products extends Component {
                                     <TableRowColumn style={styles.columns.price}>{item.Price}</TableRowColumn>
                                     <TableRowColumn style={styles.columns.category}>{item.Category ? item.Category.Name : ''}</TableRowColumn>
                                     <TableRowColumn style={styles.columns.edit}>
-                                        <Link className="button" to="/form">
+                                        <Link className="button" to={LinkEdit(item.Id)}>
                                         <FloatingActionButton zDepth={0} mini={true} backgroundColor={grey200} iconStyle={styles.editButton}>
                                             <ContentCreate  />
                                         </FloatingActionButton>
