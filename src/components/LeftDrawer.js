@@ -6,7 +6,7 @@ import MenuItem from 'material-ui/MenuItem';
 import {Link} from 'react-router';
 import Avatar from 'material-ui/Avatar';
 
-const userImage = '../images/devinsg.png';
+const userImage = require('../images/devinsg.png');
 
 const LeftDrawer = (props) => {
   let { navDrawerOpen } = props;
