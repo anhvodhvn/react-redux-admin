@@ -15,10 +15,6 @@ class ProductAdd extends Component {
         super(props);
     }
 
-    componentWillMount() {
-        console.log('---ProductAdd---');
-    }
-
     render() {
         return (
             <form>

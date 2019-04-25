@@ -14,10 +14,6 @@ class ProductEdit extends Component {
         super(props);
     }
 
-    componentDidMount() {
-        console.log('---ProductEdit---');
-    }
-
     render() {
         return (
             <form>
