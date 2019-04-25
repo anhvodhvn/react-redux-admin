@@ -1,4 +1,5 @@
-import { GET_MERCHANT_LIST } from '../utils/constants';
+import CONSTANTS from '../utils/constants';
+const { GET_MERCHANT_LIST } = CONSTANTS;
 
 const INITIAL_STATE = {
   merchantList: [],

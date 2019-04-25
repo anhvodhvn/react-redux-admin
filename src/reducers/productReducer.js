@@ -1,4 +1,5 @@
-import { GET_PRODUCT_LIST, GET_PRODUCT_ITEM } from '../utils/constants';
+import CONSTANTS from '../utils/constants';
+const { GET_PRODUCT_LIST, GET_PRODUCT_ITEM } = CONSTANTS;
 
 const INITIAL_STATE = {
   productList: [],

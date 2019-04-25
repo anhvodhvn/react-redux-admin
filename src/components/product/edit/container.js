@@ -12,7 +12,7 @@ import DatePicker from 'material-ui/DatePicker';
 import Divider from 'material-ui/Divider';
 
 import { editProduct } from '../../../actions/product';
-import { CATEGORY, LOCATION } from '../../../utils/constants';
+import CONSTANTS from '../../../utils/constants';
 
 import styles from './styles';
 class ProductEdit extends Component {
@@ -54,11 +54,11 @@ class ProductEdit extends Component {
                 <TextField hintText="Name" floatingLabelText="Name" fullWidth={true} value={name} />
 
                 <SelectField floatingLabelText="City" value={location} fullWidth={true} onChange={this.handleChangeLocation}>
-                    { LOCATION.map((item) => <MenuItem key={item.Code} value={item.Code} primaryText={item.Name}/>) }
+                    { CONSTANTS.LOCATION.map((item) => <MenuItem key={item.Code} value={item.Code} primaryText={item.Name}/>) }
                 </SelectField>
 
                 <SelectField floatingLabelText="Category" value={category} fullWidth={true} onChange={this.handleChangeCategory}>
-                    { CATEGORY.map((item) => <MenuItem key={item.Code} value={item.Code} primaryText={item.Name}/>) }
+                    { CONSTANTS.CATEGORY.map((item) => <MenuItem key={item.Code} value={item.Code} primaryText={item.Name}/>) }
                 </SelectField>
 
                 <DatePicker hintText="Expiration Date" floatingLabelText="Expiration Date" fullWidth={true} value={expiration} />

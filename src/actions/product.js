@@ -1,5 +1,6 @@
 import api from '../api/api';
-import { GET_PRODUCT_LIST, GET_PRODUCT_ITEM } from '../utils/constants';
+import CONSTANTS from '../utils/constants';
+const { GET_PRODUCT_LIST, GET_PRODUCT_ITEM } = CONSTANTS;
 
 export const getProductList = function() {
     return (dispatch) => {
