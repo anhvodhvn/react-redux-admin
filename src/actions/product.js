@@ -22,7 +22,7 @@ export const getProductList = function() {
 
 export const getProductItem = function(id) {
     return (dispatch) => {
-        return api.get(`/product/list/${id}`)
+        return api.get(`/product/${id}`)
         .then((res) => {
             let { product } = res.data;
             dispatch({ 
@@ -37,4 +37,12 @@ export const getProductItem = function(id) {
             });
         });
     };
+};
+
+export const addProduct = function(product) {
+    return product;
+};
+
+export const editProduct = function(product) {
+    return product;
 };
