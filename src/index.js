@@ -1,7 +1,8 @@
 /* eslint-disable import/default */
 
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -12,6 +13,12 @@ import 'flexboxgrid/css/flexboxgrid.css';
 
 injectTapEventPlugin();
 
-render(
-    <Router routes={routes} history={browserHistory} />, document.getElementById('app')
+import configureStore from './store/configureStore';
+const store = new configureStore();
+
+ReactDOM.render(
+    <Provider store={store}>
+        <Router routes={routes} history={browserHistory} />
+    </Provider>,
+    document.getElementById('app')
 );
