@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import RaisedButton from 'material-ui/RaisedButton';
 import MenuItem from 'material-ui/MenuItem';
 import TextField from 'material-ui/TextField';
@@ -8,25 +10,54 @@ import Toggle from 'material-ui/Toggle';
 import DatePicker from 'material-ui/DatePicker';
 import Divider from 'material-ui/Divider';
 
+import { addProduct } from '../../../actions/product';
+import CONSTANTS from '../../../utils/constants';
+
 import styles from './styles';
 
 class ProductAdd extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            location: null,
+            category: null,
+            expiration: new Date(),
+            price: 50
+        };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChangeLocation = this.handleChangeLocation.bind(this);
+        this.handleChangeCategory = this.handleChangeCategory.bind(this);
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+    }
+
+    handleChangeLocation(event, index, value) {
+        this.setState({ location: value });
+    }
+
+    handleChangeCategory(event, index, value) {
+        this.setState({ category: value });
     }
 
     render() {
         return (
-            <form>
+            <form onSubmit={this.handleSubmit}>
                 <TextField hintText="Name" floatingLabelText="Name" fullWidth={true} />
 
-                <SelectField floatingLabelText="City" value="" fullWidth={true}>
-                    <MenuItem key={0} primaryText="London"/>
-                    <MenuItem key={1} primaryText="Paris"/>
-                    <MenuItem key={2} primaryText="Rome"/>
+                <SelectField floatingLabelText="City" value={this.state.location} fullWidth={true} onChange={this.handleChangeLocation}>
+                    { CONSTANTS.LOCATION.map((item) => <MenuItem key={item.Code} value={item.Code} primaryText={item.Name}/>) }
                 </SelectField>
 
-                <DatePicker hintText="Expiration Date" floatingLabelText="Expiration Date" fullWidth={true}/>
+                <SelectField floatingLabelText="Category" value={this.state.category} fullWidth={true} onChange={this.handleChangeCategory}>
+                    { CONSTANTS.CATEGORY.map((item) => <MenuItem key={item.Code} value={item.Code} primaryText={item.Name}/>) }
+                </SelectField>
+
+                <DatePicker hintText="Expiration Date" floatingLabelText="Expiration Date" fullWidth={true} value={this.state.expiration} />
+
+                <TextField hintText="Price" floatingLabelText="Price" fullWidth={true} value={this.state.price} />
 
                 <div style={styles.toggleDiv}>
                     <Toggle label="Disabled" labelStyle={styles.toggleLabel} />
@@ -46,4 +77,22 @@ class ProductAdd extends Component {
     }
 }
 
-export default ProductAdd;
+ProductAdd.propTypes = {
+    product: PropTypes.object,
+    addProduct: PropTypes.func
+};
+
+const mapStateToProps = state => {
+    const { productItem } = state.productReducer;
+    return {
+        product: productItem
+    };
+};
+
+const mapDispatchToProps = dispatch => (
+    bindActionCreators({
+        addProduct
+    }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductAdd);
