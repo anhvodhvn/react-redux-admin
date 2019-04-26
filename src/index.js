@@ -16,9 +16,14 @@ injectTapEventPlugin();
 import configureStore from './store/configureStore';
 const store = new configureStore();
 
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 ReactDOM.render(
     <Provider store={store}>
-        <Router routes={routes} history={browserHistory} />
+        <MuiThemeProvider muiTheme={getMuiTheme()}>
+            <Router routes={routes} history={browserHistory} />
+        </MuiThemeProvider>
     </Provider>,
     document.getElementById('app')
 );
