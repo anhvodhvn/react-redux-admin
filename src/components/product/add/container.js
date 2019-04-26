@@ -12,29 +12,22 @@ class ProductAdd extends Component {
         super(props);
 
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChangeLocation = this.handleChangeLocation.bind(this);
-        this.handleChangeCategory = this.handleChangeCategory.bind(this);
     }
 
     handleSubmit(values) {
         let product = {
-            name: values.name
+            name: values.name,
+            location: values.location,
+            category: values.category,
+            price: values.price
         };
         let { addProduct } = this.props;
         return addProduct(product);
     }
 
-    handleChangeLocation(event, index, value) {
-    }
-
-    handleChangeCategory(event, index, value) {
-    }
-
     render() {
         return (
             <ProductAddForm onSubmit={this.handleSubmit}
-                            handleChangeLocation={this.handleChangeLocation}
-                            handleChangeCategory={this.handleChangeCategory}
                             locationList={CONSTANTS.LOCATION}
                             categoryList={CONSTANTS.CATEGORY} />
         );

@@ -23,25 +23,33 @@ const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) 
                 {...custom} />
 );
 
+const renderSelectField = ({ input, label, meta: { touched, error }, children, ...custom }) => (
+    <SelectField  floatingLabelText={label}
+                  fullWidth={true}
+                  errorText={touched && error}
+                  {...input}
+                  onChange={(event, index, value) => input.onChange(value)}
+                  children={children}
+                  {...custom} />
+);
+
 const ProductAddForm = (props) => {
-    const {
-        handleSubmit, handleChangeLocation, handleChangeCategory, locationList, categoryList
-    } = props;
+    const { handleSubmit, locationList, categoryList } = props;
     return (
         <form onSubmit={handleSubmit}>
             <Field name="name" component={renderTextField} label="Name"/>
 
-            <SelectField floatingLabelText="City" fullWidth={true} onChange={handleChangeLocation}>
+            <Field name="location" component={renderSelectField} label="Location">
                 { locationList.map((item) => <MenuItem key={item.Code} value={item.Code} primaryText={item.Name}/>) }
-            </SelectField>
+            </Field>
 
-            <SelectField floatingLabelText="Category" fullWidth={true} onChange={handleChangeCategory}>
+            <Field name="category" component={renderSelectField} label="Category">
                 { categoryList.map((item) => <MenuItem key={item.Code} value={item.Code} primaryText={item.Name}/>) }
-            </SelectField>
+            </Field>
 
             <DatePicker hintText="Expiration Date" floatingLabelText="Expiration Date" fullWidth={true} />
 
-            <TextField hintText="Price" floatingLabelText="Price" fullWidth={true} />
+            <Field name="price" component={renderTextField} label="Price"/>
 
             <div style={styles.toggleDiv}>
                 <Toggle label="Disabled" labelStyle={styles.toggleLabel} />
@@ -62,8 +70,6 @@ const ProductAddForm = (props) => {
   
 ProductAddForm.propTypes = {
     handleSubmit: PropTypes.func,
-    handleChangeLocation: PropTypes.func,
-    handleChangeCategory: PropTypes.func,
     locationList: PropTypes.array,
     categoryList: PropTypes.array
 };
