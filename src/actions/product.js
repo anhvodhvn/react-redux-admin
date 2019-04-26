@@ -1,6 +1,6 @@
 import api from '../api/api';
 import CONSTANTS from '../utils/constants';
-const { GET_PRODUCT_LIST, GET_PRODUCT_ITEM } = CONSTANTS;
+const { GET_PRODUCT_LIST, GET_PRODUCT_ITEM, CREATE_PRODUCT, UPDATE_PRODUCT } = CONSTANTS;
 
 export const getProductList = function() {
     return (dispatch) => {
@@ -40,10 +40,34 @@ export const getProductItem = function(id) {
     };
 };
 
-export const addProduct = function(product) {
-    return product;
+export const addProduct = (product) => {
+    return (dispatch) => {
+        return api.post('/product/create', { data: product })
+        .then((res) => {
+            let { product } = res.data;
+            dispatch({ 
+                type: CREATE_PRODUCT, 
+                payload: product 
+            });
+        })
+        .catch((err) => {
+            throw err;
+        });
+    };
 };
 
-export const editProduct = function(product) {
-    return product;
+export const editProduct = (product) => {
+    return (dispatch) => {
+        return api.put('/product/update', { data: product })
+        .then((res) => {
+            let { product } = res.data;
+            dispatch({ 
+                type: UPDATE_PRODUCT, 
+                payload: product 
+            });
+        })
+        .catch((err) => {
+            throw err;
+        });
+    };
 };
