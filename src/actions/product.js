@@ -40,12 +40,12 @@ export const getProductItem = function(id) {
     };
 };
 
-export const addProduct = (product) => {
+export const addProduct = (data) => {
     return (dispatch) => {
-        return api.post('/product/create', { data: product })
+        return api.post('/product/create', data)
         .then((res) => {
             let { product } = res.data;
-            dispatch({ 
+            dispatch({
                 type: CREATE_PRODUCT, 
                 payload: product 
             });
@@ -56,12 +56,12 @@ export const addProduct = (product) => {
     };
 };
 
-export const editProduct = (product) => {
+export const editProduct = (data) => {
     return (dispatch) => {
-        return api.put('/product/update', { data: product })
+        return api.put('/product/update', data)
         .then((res) => {
             let { product } = res.data;
-            dispatch({ 
+            dispatch({
                 type: UPDATE_PRODUCT, 
                 payload: product 
             });

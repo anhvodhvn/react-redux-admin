@@ -26,6 +26,13 @@ class ProductEdit extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        let product = {
+            id: 'b95e9f80-67f7-11e9-863b-d30e0d39d98b',
+            name: 'Macbook Air Ultimate 2025',
+            image: 'https://s3.amazonaws.com/aws-product-images/product/working.jpg'
+        };
+        let { editProduct } = this.props;
+        return editProduct(product);
     }
 
     handleChangeLocation(event, index, value) {

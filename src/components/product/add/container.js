@@ -32,6 +32,11 @@ class ProductAdd extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        let product = {
+            name: 'Acer Xpatch 2010'
+        };
+        let { addProduct } = this.props;
+        return addProduct(product);
     }
 
     handleChangeLocation(event, index, value) {
