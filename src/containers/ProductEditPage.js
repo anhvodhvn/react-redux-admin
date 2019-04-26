@@ -19,7 +19,7 @@ class ProductEditPage extends Component {
   render() {
     let { product } = this.props;
     return (
-      <PageBase title="Form Page" navigation="Application / Edit Product">
+      <PageBase title="Edit Product" navigation="Application / Edit Product">
         <ProductEdit product={product}/>
       </PageBase>
     );

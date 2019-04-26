@@ -4,7 +4,7 @@ import Products from '../components/product';
 
 const ProductPage = () => {
   return (
-    <PageBase title="Table Page" navigation="Application / Product Page">
+    <PageBase title="Product List" navigation="Application / Product Page">
       <Products />
     </PageBase>
   );
