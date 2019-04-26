@@ -1,4 +1,6 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
+import { Field, reduxForm } from 'redux-form';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import MenuItem from 'material-ui/MenuItem';
@@ -8,26 +10,38 @@ import Toggle from 'material-ui/Toggle';
 import DatePicker from 'material-ui/DatePicker';
 import Divider from 'material-ui/Divider';
 
+import validate from './validate';
+
 import styles from '../styles';
-import CONSTANTS from '../../../../utils/constants';
+
+const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
+    <TextField  hintText={label}
+                floatingLabelText={label}
+                fullWidth={true}
+                errorText={touched && error}
+                {...input}
+                {...custom} />
+);
 
 const ProductAddForm = (props) => {
-    const { handleSubmit } = props;
+    const {
+        handleSubmit, handleChangeLocation, handleChangeCategory, locationList, categoryList
+    } = props;
     return (
         <form onSubmit={handleSubmit}>
-            <TextField hintText="Name" floatingLabelText="Name" fullWidth={true} />
+            <Field name="name" component={renderTextField} label="Name"/>
 
-            <SelectField floatingLabelText="City" value={this.state.location} fullWidth={true} onChange={this.handleChangeLocation}>
-                { CONSTANTS.LOCATION.map((item) => <MenuItem key={item.Code} value={item.Code} primaryText={item.Name}/>) }
+            <SelectField floatingLabelText="City" fullWidth={true} onChange={handleChangeLocation}>
+                { locationList.map((item) => <MenuItem key={item.Code} value={item.Code} primaryText={item.Name}/>) }
             </SelectField>
 
-            <SelectField floatingLabelText="Category" value={this.state.category} fullWidth={true} onChange={this.handleChangeCategory}>
-                { CONSTANTS.CATEGORY.map((item) => <MenuItem key={item.Code} value={item.Code} primaryText={item.Name}/>) }
+            <SelectField floatingLabelText="Category" fullWidth={true} onChange={handleChangeCategory}>
+                { categoryList.map((item) => <MenuItem key={item.Code} value={item.Code} primaryText={item.Name}/>) }
             </SelectField>
 
-            <DatePicker hintText="Expiration Date" floatingLabelText="Expiration Date" fullWidth={true} value={this.state.expiration} />
+            <DatePicker hintText="Expiration Date" floatingLabelText="Expiration Date" fullWidth={true} />
 
-            <TextField hintText="Price" floatingLabelText="Price" fullWidth={true} value={this.state.price} />
+            <TextField hintText="Price" floatingLabelText="Price" fullWidth={true} />
 
             <div style={styles.toggleDiv}>
                 <Toggle label="Disabled" labelStyle={styles.toggleLabel} />
@@ -47,10 +61,14 @@ const ProductAddForm = (props) => {
 };
   
 ProductAddForm.propTypes = {
-  handleSubmit: PropTypes.func,
-  pristine: PropTypes.func,
-  reset: PropTypes.func,
-  submitting: PropTypes.func
+    handleSubmit: PropTypes.func,
+    handleChangeLocation: PropTypes.func,
+    handleChangeCategory: PropTypes.func,
+    locationList: PropTypes.array,
+    categoryList: PropTypes.array
 };
 
-export default ProductAddForm;
+export default reduxForm({
+    form: 'ProductAddForm',
+    validate
+})(ProductAddForm);
