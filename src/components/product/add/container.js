@@ -16,26 +16,23 @@ class ProductAdd extends Component {
         this.handleChangeCategory = this.handleChangeCategory.bind(this);
     }
 
-    handleSubmit(o, e) {
-        e.preventDefault();
+    handleSubmit(values) {
         let product = {
-            name: 'Acer Xpatch 2010'
+            name: values.name
         };
         let { addProduct } = this.props;
         return addProduct(product);
     }
 
     handleChangeLocation(event, index, value) {
-        //this.setState({ location: value });
     }
 
     handleChangeCategory(event, index, value) {
-        //this.setState({ category: value });
     }
 
     render() {
         return (
-            <ProductAddForm handleSubmit={this.handleSubmit}
+            <ProductAddForm onSubmit={this.handleSubmit}
                             handleChangeLocation={this.handleChangeLocation}
                             handleChangeCategory={this.handleChangeCategory}
                             locationList={CONSTANTS.LOCATION}
