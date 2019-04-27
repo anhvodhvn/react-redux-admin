@@ -1,49 +1,55 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router';
-import RaisedButton from 'material-ui/RaisedButton';
-import MenuItem from 'material-ui/MenuItem';
-import TextField from 'material-ui/TextField';
-import SelectField from 'material-ui/SelectField';
-import Toggle from 'material-ui/Toggle';
-import DatePicker from 'material-ui/DatePicker';
-import Divider from 'material-ui/Divider';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import styles from './styles';
+import ProductAddForm from './form';
+
+import { addProduct } from '../../../actions/product';
+import CONSTANTS from '../../../utils/constants';
 
 class ProductAdd extends Component {
     constructor(props) {
         super(props);
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit(values) {
+        let product = {
+            name: values.name,
+            location: values.location,
+            category: values.category,
+            price: values.price
+        };
+        let { addProduct } = this.props;
+        return addProduct(product);
     }
 
     render() {
         return (
-            <form>
-                <TextField hintText="Name" floatingLabelText="Name" fullWidth={true} />
-
-                <SelectField floatingLabelText="City" value="" fullWidth={true}>
-                    <MenuItem key={0} primaryText="London"/>
-                    <MenuItem key={1} primaryText="Paris"/>
-                    <MenuItem key={2} primaryText="Rome"/>
-                </SelectField>
-
-                <DatePicker hintText="Expiration Date" floatingLabelText="Expiration Date" fullWidth={true}/>
-
-                <div style={styles.toggleDiv}>
-                    <Toggle label="Disabled" labelStyle={styles.toggleLabel} />
-                </div>
-
-                <Divider/>
-
-                <div style={styles.buttons}>
-                    <Link to="/product">
-                        <RaisedButton label="Cancel"/>
-                    </Link>
-
-                    <RaisedButton label="Save" style={styles.saveButton} type="submit" primary={true}/>
-                </div>
-            </form>
+            <ProductAddForm onSubmit={this.handleSubmit}
+                            locationList={CONSTANTS.LOCATION}
+                            categoryList={CONSTANTS.CATEGORY} />
         );
     }
 }
 
-export default ProductAdd;
+ProductAdd.propTypes = {
+    product: PropTypes.object,
+    addProduct: PropTypes.func
+};
+
+const mapStateToProps = state => {
+    const { productItem } = state.productReducer;
+    return {
+        product: productItem
+    };
+};
+
+const mapDispatchToProps = dispatch => (
+    bindActionCreators({
+        addProduct
+    }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductAdd);
