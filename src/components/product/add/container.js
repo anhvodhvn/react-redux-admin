@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { browserHistory } from 'react-router';
 
 import ProductAddForm from './form';
 
@@ -22,7 +23,13 @@ class ProductAdd extends Component {
             price: values.price
         };
         let { addProduct } = this.props;
-        return addProduct(product);
+        return addProduct(product)
+        .then(res => {
+            if (res.status == 200) browserHistory.push('/product');
+        })
+        .catch(err => {
+            throw err;
+        });
     }
 
     render() {

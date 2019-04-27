@@ -49,6 +49,7 @@ export const addProduct = (data) => {
                 type: CREATE_PRODUCT, 
                 payload: product 
             });
+            return res;
         })
         .catch((err) => {
             throw err;
