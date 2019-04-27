@@ -4,41 +4,13 @@ import { Field, reduxForm } from 'redux-form';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import MenuItem from 'material-ui/MenuItem';
-import TextField from 'material-ui/TextField';
-import SelectField from 'material-ui/SelectField';
+
+import renderTextField from '../../../base/renderTextField';
+import renderSelectField from '../../../base/renderSelectField';
 
 import validate from './validate';
 
 import styles from '../styles';
-
-const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
-    <TextField  hintText={label}
-                floatingLabelText={label}
-                fullWidth={true}
-                errorText={touched && error}
-                {...input}
-                {...custom} />
-);
-
-renderTextField.propTypes = {
-    input: PropTypes.object,
-    label: PropTypes.string
-};
-
-const renderSelectField = ({ input, label, meta: { touched, error }, children, ...custom }) => (
-    <SelectField  floatingLabelText={label}
-                  fullWidth={true}
-                  errorText={touched && error}
-                  {...input}
-                  onChange={(event, index, value) => input.onChange(value)}
-                  children={children}
-                  {...custom} />
-);
-
-renderSelectField.propTypes = {
-    input: PropTypes.object,
-    label: PropTypes.string
-};
 
 const ProductAddForm = (props) => {
     const { handleSubmit, locationList, categoryList } = props;
