@@ -22,8 +22,7 @@ const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) 
 
 renderTextField.propTypes = {
     input: PropTypes.object,
-    label: PropTypes.string,
-    meta: PropTypes.object
+    label: PropTypes.string
 };
 
 const renderSelectField = ({ input, label, meta: { touched, error }, children, ...custom }) => (
@@ -38,9 +37,7 @@ const renderSelectField = ({ input, label, meta: { touched, error }, children, .
 
 renderSelectField.propTypes = {
     input: PropTypes.object,
-    label: PropTypes.string,
-    meta: PropTypes.object,
-    children: PropTypes.object
+    label: PropTypes.string
 };
 
 const ProductAddForm = (props) => {
