@@ -6,7 +6,8 @@
     "npm": ">=3"
   },
   "scripts": {
-    "start": "npm-run-all --parallel test:watch open:src lint:watch",
+    "develop": "NODE_ENV=develop npm-run-all --parallel test:watch open:src lint:watch",
+    "start": "NODE_ENV=production npm-run-all --parallel test:watch open:src lint:watch",
     "open:src": "babel-node tools/srcServer.js",
     "open:dist": "babel-node tools/distServer.js",
     "lint": "esw webpack.config.* src tools --color",

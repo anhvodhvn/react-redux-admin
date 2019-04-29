@@ -7,13 +7,14 @@ import MenuItem from 'material-ui/MenuItem';
 
 import renderTextField from '../../../base/renderTextField';
 import renderSelectField from '../../../base/renderSelectField';
+import ErrorMessage from "../../../base/ErrorMessage";
 
 import validate from './validate';
 
 import styles from '../styles';
 
 const ProductAddForm = (props) => {
-    const { handleSubmit, locationList, categoryList } = props;
+    const { handleSubmit, submitError, locationList, categoryList } = props;
     return (
         <form onSubmit={handleSubmit}>
             <Field name="name" component={renderTextField} label="Name"/>
@@ -28,6 +29,8 @@ const ProductAddForm = (props) => {
 
             <Field name="price" component={renderTextField} label="Price"/>
 
+            { submitError ? <ErrorMessage errorMessage={submitError.error} /> : null }
+
             <div style={styles.buttons}>
                 <Link to="/product">
                     <RaisedButton label="Cancel"/>
@@ -41,6 +44,7 @@ const ProductAddForm = (props) => {
   
 ProductAddForm.propTypes = {
     handleSubmit: PropTypes.func,
+    submitError: PropTypes.object,
     locationList: PropTypes.array,
     categoryList: PropTypes.array
 };
