@@ -7,6 +7,7 @@ import ProductAddForm from './form';
 
 import { addProduct } from '../../../actions/product';
 import CONSTANTS from '../../../utils/constants';
+import utils from '../../../utils/utils';
 
 class ProductAdd extends Component {
     constructor(props) {
@@ -21,8 +22,8 @@ class ProductAdd extends Component {
     handleSubmit(values) {
         let product = {
             name: values.name,
-            location: values.location,
-            category: values.category,
+            locationId: values.location,
+            categoryId: values.category,
             price: values.price
         };
         let { addProduct } = this.props;
@@ -31,8 +32,8 @@ class ProductAdd extends Component {
             if (res.status == 200) browserHistory.push('/product');
         })
         .catch(err => {
-            let { data: error } = err.response;
-            this.setState({ submitError: error });
+            let error = utils.handleErrorMessage(err.response);
+            this.setState({ submitError: { error } });
         });
     }
 
