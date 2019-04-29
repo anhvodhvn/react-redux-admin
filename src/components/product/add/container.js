@@ -12,6 +12,9 @@ class ProductAdd extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            submitError: null
+        };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -28,13 +31,15 @@ class ProductAdd extends Component {
             if (res.status == 200) browserHistory.push('/product');
         })
         .catch(err => {
-            throw err;
+            let { data: error } = err.response;
+            this.setState({ submitError: error });
         });
     }
 
     render() {
         return (
             <ProductAddForm onSubmit={this.handleSubmit}
+                            submitError={this.state.submitError}
                             locationList={CONSTANTS.LOCATION}
                             categoryList={CONSTANTS.CATEGORY} />
         );
