@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import ProductEditFrom from './form';
 
-import { editProduct } from '../../../actions/product';
+import { getProductItem, editProduct } from '../../../actions/product';
 import CONSTANTS from '../../../utils/constants';
 
 class ProductEdit extends Component {
@@ -12,6 +12,11 @@ class ProductEdit extends Component {
         super(props);
 
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        let { id, getProductItem } = this.props;
+        return getProductItem(id);
     }
 
     handleSubmit(e) {
@@ -37,7 +42,9 @@ class ProductEdit extends Component {
 }
 
 ProductEdit.propTypes = {
+    id: PropTypes.string,
     product: PropTypes.object,
+    getProductItem: PropTypes.func,
     editProduct: PropTypes.func
 };
 
@@ -50,6 +57,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => (
     bindActionCreators({
+        getProductItem,
         editProduct
     }, dispatch)
 );
