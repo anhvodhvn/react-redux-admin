@@ -72,3 +72,35 @@ export const editProduct = (data) => {
         });
     };
 };
+
+export const uploadProductImage = (selectedFile, productId) => {
+    let { name: fileName, type: fileType } = selectedFile;
+    return api.post('product/image/signurl',{
+        fileName : fileName,
+        fileType : fileType
+    })
+    .then(response => {
+        let returnData = response.data.returnData;
+        let signedRequest = returnData.signedRequest;
+        let url = returnData.url;
+        console.log('- Now, have product image url:', url);
+      
+        //console.log("Recieved a signed request " + signedRequest);
+        let options = {
+            headers: {
+                'Content-Type': fileType
+            }
+        };
+        return api.put(signedRequest, selectedFile, options)
+        .then(result => {
+            console.log("- Response from s3:", result);
+            console.log('- Now, update product image url by id:', productId);
+        })
+        .catch(error => {
+            alert("ERROR " + JSON.stringify(error));
+        });
+    })
+    .catch(error => {
+        alert("ERROR " + JSON.stringify(error));
+    });
+};
