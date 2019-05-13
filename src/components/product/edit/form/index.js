@@ -10,6 +10,7 @@ import SelectField from 'material-ui/SelectField';
 import Toggle from 'material-ui/Toggle';
 import DatePicker from 'material-ui/DatePicker';
 import Divider from 'material-ui/Divider';
+import ImageUpload from '../../../base/ImageUpload';
 
 import validate from './validate';
 
@@ -18,8 +19,10 @@ import styles from '../styles';
 const ProductEditForm = (props) => {
     let { 
         handleSubmit, locationList, categoryList,
-        product: { 
+        product: {
+            Id: id,
             ProductName: name,
+            ImageUrl: imageUrl,
             ExpirationDate: expiration,
             Location: location,
             Category: category,
@@ -32,7 +35,7 @@ const ProductEditForm = (props) => {
     price = price ? parseInt(price) : 0;
     return (
         <form onSubmit={handleSubmit}>
-            <TextField hintText="Name" floatingLabelText="Name" fullWidth={true} value={name} />
+            <TextField hintText="Name" floatingLabelText="Name" fullWidth={true} value={name || ''} />
 
             <SelectField floatingLabelText="City" fullWidth={true} value={location}>
                 { locationList.map((item) => <MenuItem key={item.Code} value={item.Code} primaryText={item.Name}/>) }
@@ -49,6 +52,10 @@ const ProductEditForm = (props) => {
             <div style={styles.toggleDiv}>
                 <Toggle label="Disabled" labelStyle={styles.toggleLabel} />
             </div>
+
+            <Divider/>
+
+            <ImageUpload productId={id || ''} imageUrl={imageUrl || ''} />
 
             <Divider/>
 

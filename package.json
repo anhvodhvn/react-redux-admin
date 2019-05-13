@@ -1,13 +1,12 @@
 {
   "name": "react-material-admin-template",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Admin template using React and Material-UI",
   "engines": {
     "npm": ">=3"
   },
   "scripts": {
-    "develop": "NODE_ENV=develop npm-run-all --parallel test:watch open:src lint:watch",
-    "start": "NODE_ENV=production npm-run-all --parallel test:watch open:src lint:watch",
+    "start": "npm-run-all --parallel test:watch open:src lint:watch",
     "open:src": "babel-node tools/srcServer.js",
     "open:dist": "babel-node tools/distServer.js",
     "lint": "esw webpack.config.* src tools --color",
