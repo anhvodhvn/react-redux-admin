@@ -47,11 +47,15 @@ export const addProduct = (data) => {
             let { product } = res.data;
             dispatch({
                 type: CREATE_PRODUCT, 
-                payload: product 
+                payload: product
             });
             return res;
         })
         .catch((err) => {
+            dispatch({
+                type: CREATE_PRODUCT, 
+                payload: err
+            });
             throw err;
         });
     };
@@ -64,13 +68,31 @@ export const editProduct = (data) => {
             let { product } = res.data;
             dispatch({
                 type: UPDATE_PRODUCT, 
-                payload: product 
+                payload: product
             });
+            return res;
         })
         .catch((err) => {
+            dispatch({
+                type: UPDATE_PRODUCT, 
+                payload: err
+            });
             throw err;
         });
     };
+};
+
+export const updateProductImage = (id, image) => {
+    return new Promise(function(resolve, reject) {
+        return api.put('/product/image/update', {id, image})
+        .then((res) => {
+            let { product } = res.data;
+            resolve(product);
+        })
+        .catch((err) => {
+            reject(err);
+        });
+    });
 };
 
 export const uploadProductImage = (selectedFile) => {

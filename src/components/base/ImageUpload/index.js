@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { uploadProductImage } from '../../../actions/product';
+import { uploadProductImage, updateProductImage } from '../../../actions/product';
 
 // https://codepen.io/hartzis/pen/VvNGZP
 class ImageUpload extends Component {
@@ -8,13 +8,21 @@ class ImageUpload extends Component {
     this.state = {file: '',imagePreviewUrl: ''};
   }
   
-  _handleSubmit(e) {
-    e.preventDefault();
-    // TODO: do something with -> this.state.file
+  _handleSubmit() {
+    //e.preventDefault();
+    //TODO: do something with -> this.state.file
     //console.log('handle uploading-', this.state.file);
+
     let { productId } = this.props;
     let selectedFile = this.state.file;
-    return uploadProductImage(selectedFile, productId);
+    return uploadProductImage(selectedFile)
+    .then(function(data) {
+      let { url } = data;
+      return updateProductImage(productId, url);
+    })
+    .catch(function(error) {
+      alert('ERROR:', JSON.stringify(error));
+    });
   }
   
   _handleImageChange(e) {
