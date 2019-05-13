@@ -19,7 +19,8 @@ import styles from '../styles';
 const ProductEditForm = (props) => {
     let { 
         handleSubmit, locationList, categoryList,
-        product: { 
+        product: {
+            Id: id,
             ProductName: name,
             ExpirationDate: expiration,
             Location: location,
@@ -53,7 +54,7 @@ const ProductEditForm = (props) => {
 
             <Divider/>
 
-            <ImageUpload />
+            <ImageUpload productId={id || ''}/>
 
             <Divider/>
 
