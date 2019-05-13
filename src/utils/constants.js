@@ -1,4 +1,9 @@
 const CONSTANTS = {
+    PROCESS: {
+        NODE_ENV: 'production',
+        //NODE_ENV: 'development'
+    },
+
     /* product */
     GET_PRODUCT_LIST: 'GET_PRODUCT_LIST',
     GET_PRODUCT_ITEM: 'GET_PRODUCT_ITEM',
