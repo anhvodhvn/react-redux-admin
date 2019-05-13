@@ -33,8 +33,10 @@ a:hover {
 
 
 .file-upload {
-  h3 {
-    margin-left: 15px
+  h5 {
+    margin-top: 38px;
+    color: rgba(0, 0, 0, 0.3);
+    font-weight: 500;
   }
 
   .fileInput {
@@ -51,7 +53,7 @@ a:hover {
     text-align: center;
     margin: 5px 15px;
     height: 200px;
-    width: 500px;
+    width: 300px;
     border-left: 1px solid gray;
     border-right: 1px solid gray;
     border-top: 5px solid gray;
