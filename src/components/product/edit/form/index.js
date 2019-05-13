@@ -22,6 +22,7 @@ const ProductEditForm = (props) => {
         product: {
             Id: id,
             ProductName: name,
+            ImageUrl: imageUrl,
             ExpirationDate: expiration,
             Location: location,
             Category: category,
@@ -54,7 +55,7 @@ const ProductEditForm = (props) => {
 
             <Divider/>
 
-            <ImageUpload productId={id || ''}/>
+            <ImageUpload productId={id || ''} imageUrl={imageUrl || ''} />
 
             <Divider/>
 

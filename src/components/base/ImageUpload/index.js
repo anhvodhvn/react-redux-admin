@@ -42,10 +42,14 @@ class ImageUpload extends Component {
   }
   
   render() {
+    let {imageUrl} = this.props;
     let {imagePreviewUrl} = this.state;
+
     let $imagePreview = null;
     if (imagePreviewUrl) $imagePreview = (<img src={imagePreviewUrl} />);
+    else if (imageUrl && !imagePreviewUrl) $imagePreview = (<img src={imageUrl} />);
     else $imagePreview = (<div className="previewText">Please select an Image for Preview</div>);
+
     return (
       <div className="file-upload">
         <h5>Image Upload & Preview</h5>
@@ -63,6 +67,7 @@ class ImageUpload extends Component {
 
 ImageUpload.propTypes = {
   productId: PropTypes.string,
+  imageUrl: PropTypes.string,
 };
 
 export default ImageUpload;
