@@ -18,7 +18,8 @@ class PageBase extends React.Component {
         <Paper style={globalStyles.paper}>
           <h3 style={globalStyles.title}>{title}</h3>
 
-          <Divider/> {children}
+          <Divider/>
+          {children}
 
           <div style={globalStyles.clear}/>
 
