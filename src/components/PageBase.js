@@ -3,10 +3,13 @@ import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 import globalStyles from '../styles';
 
-const PageBase = (props) => {
+class PageBase extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-    const {title, navigation} = props;
-
+  render() {
+    const {title, navigation, children} = this.props;
     return (
       <div>
         <span style={globalStyles.navigation}>{navigation}</span>
@@ -15,14 +18,15 @@ const PageBase = (props) => {
           <h3 style={globalStyles.title}>{title}</h3>
 
           <Divider/>
-          {props.children}
+          {children}
 
           <div style={globalStyles.clear}/>
 
         </Paper>
       </div>
     );
-};
+  }
+}
 
 PageBase.propTypes = {
   title: PropTypes.string,

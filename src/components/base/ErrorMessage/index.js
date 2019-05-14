@@ -5,14 +5,14 @@ const style = {
     'color': 'red'
 };
 
-const renderErrorMessage = ({ errorMessage }) => (
+const ErrorMessage = ({ errorMessage }) => (
     <Subheader>
         <div style={style}>{errorMessage}</div>
     </Subheader>
 );
 
-renderErrorMessage.propTypes = {
+ErrorMessage.propTypes = {
     errorMessage: PropTypes.string
 };
 
-export default renderErrorMessage;
+export default ErrorMessage;
