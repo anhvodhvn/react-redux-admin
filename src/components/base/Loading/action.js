@@ -14,13 +14,14 @@ export const toggleLoadingModal = (status) => {
     };
 };
 
-export const loading = (callback) => async (dispatch) => {
-    try 
+export const loading = (callback) => (dispatch) => {
+    try
     {
         dispatch(toggleLoadingModal(true));
-        const response = await callback();
-        dispatch(toggleLoadingModal(false));
-        return response;
+        callback();
+        setTimeout(function(){
+            dispatch(toggleLoadingModal(false));
+        }, 5000);
     }
     catch (error) {
         dispatch(toggleLoadingModal(false));
