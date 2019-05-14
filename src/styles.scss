@@ -98,6 +98,9 @@ a:hover {
   $offset: 187;
   $duration: 1.4s;
 
+  margin-top: 100px;
+  margin-bottom: 100px;
+
   .spinner {
     animation: rotator $duration linear infinite;
   }
