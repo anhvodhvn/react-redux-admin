@@ -1,3 +1,4 @@
+import Q from 'q';
 import CONSTANTS from '../../../utils/constants';
 const { TOGGLE_LOADING } = CONSTANTS;
 
@@ -15,17 +16,22 @@ export const toggleLoadingModal = (status) => {
 };
 
 export const loading = (callback) => (dispatch) => {
-    try
-    {
+    let result;
+    Q.fcall(function(){
         dispatch(toggleLoadingModal(true));
-        callback();
-        setTimeout(function(){
-            dispatch(toggleLoadingModal(false));
-        }, 5000);
-    }
-    catch (error) {
+    })
+    .then(function(){
+        return callback();
+    })
+    .then(function(data){
+        result = data;
         dispatch(toggleLoadingModal(false));
-        //console.log(error); // eslint-disable-line
+    })
+    .then(function(){
+        return result;
+    })
+    .catch(function(error){
+        dispatch(toggleLoadingModal(false));
         throw error;
-    }
+    });
 };
