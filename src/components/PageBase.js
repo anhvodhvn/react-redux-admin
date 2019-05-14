@@ -10,7 +10,7 @@ class PageBase extends React.Component {
   }
 
   render() {
-    const { title, navigation, children} = this.props;
+    const {title, navigation, children} = this.props;
     return (
       <div>
         <span style={globalStyles.navigation}>{navigation}</span>
