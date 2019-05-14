@@ -1,5 +1,5 @@
 import Q from 'q';
-import CONSTANTS from '../../../utils/constants';
+import CONSTANTS from '../utils/constants';
 const { TOGGLE_LOADING } = CONSTANTS;
 
 export function toggleLoading() {

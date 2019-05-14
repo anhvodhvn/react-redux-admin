@@ -9,7 +9,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import { grey200, pink500 } from 'material-ui/styles/colors';
 
 import { getProductList } from '../../actions/product';
-import { loading } from '../base/Loading/action';
+import { loading } from '../../actions/loading';
 import styles from './styles';
 
 const LinkEdit = (id) => {

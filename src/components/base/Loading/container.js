@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
-import LoadingIcon from './LoadingIcon';
-//import LoadingSpinner from './LoadingSpinner';
+import LoadingIcon from './form/Icon';
+//import LoadingSpinner from './form/Spinner';
 
 const getClassName = function(loading) {
   let className ='loading-panel';
