@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import {connect} from 'react-redux';
-import LoadingIcon from './form/Icon';
-//import LoadingSpinner from './form/Spinner';
+import Icon from './form/Icon';
+//import Spinner from './form/Spinner';
 
 const getClassName = function(loading) {
   let className ='loading-panel';
@@ -18,7 +18,7 @@ class Loading extends React.Component {
     let { loading } =  this.props;
     return (
       <div className={getClassName(loading)}>
-        <LoadingIcon loading={loading} />
+        <Icon loading={loading} />
       </div>
     );
   }

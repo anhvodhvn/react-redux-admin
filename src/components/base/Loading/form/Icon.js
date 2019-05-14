@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LoadingIcon = () => {
+const Icon = () => {
     return (
         <div className="loading-icon">
             <div id="circularG">
@@ -17,4 +17,4 @@ const LoadingIcon = () => {
     );
 };
 
-export default LoadingIcon;
+export default Icon;
