@@ -9,6 +9,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import { grey200, pink500 } from 'material-ui/styles/colors';
 
 import { getProductList } from '../../actions/product';
+import { loading } from '../base/Loading/action';
 import styles from './styles';
 
 const LinkEdit = (id) => {
@@ -21,8 +22,8 @@ class Products extends Component {
     }
 
     componentDidMount() {
-        let { getProductList } = this.props;
-        return getProductList();
+        let { getProductList, loading } = this.props;
+        loading(() => getProductList());
     }
 
     render() {
@@ -73,6 +74,7 @@ class Products extends Component {
 }
 
 Products.propTypes = {
+    loading: PropTypes.func,
     products: PropTypes.array,
     getProductList: PropTypes.func
 };
@@ -86,6 +88,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => (
     bindActionCreators({
+        loading,
         getProductList
     }, dispatch)
 );

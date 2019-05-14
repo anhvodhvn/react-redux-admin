@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
-//import LoadingSpinner from './LoadingSpinner';
+import {connect} from 'react-redux';
 import LoadingIcon from './LoadingIcon';
+//import LoadingSpinner from './LoadingSpinner';
 
 const getClassName = function(loading) {
   let className ='loading-panel';
@@ -27,4 +28,10 @@ Loading.propTypes = {
   loading: PropTypes.bool
 };
 
-export default Loading;
+function mapStateToProps(state) {
+  return {
+      loading: state.loadingReducer.loading
+  };
+}
+
+export default connect(mapStateToProps, null)(Loading);
