@@ -3,6 +3,7 @@ import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 import globalStyles from '../styles';
 
+import Loading from './base/Loading';
 class PageBase extends React.Component {
   constructor(props) {
     super(props);
@@ -23,6 +24,8 @@ class PageBase extends React.Component {
           <div style={globalStyles.clear}/>
 
         </Paper>
+
+        <Loading />
       </div>
     );
   }

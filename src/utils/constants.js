@@ -4,6 +4,9 @@ const CONSTANTS = {
         //NODE_ENV: 'development'
     },
 
+    /* loading */
+    TOGGLE_LOADING: 'TOGGLE_LOADING',
+
     /* product */
     GET_PRODUCT_LIST: 'GET_PRODUCT_LIST',
     GET_PRODUCT_ITEM: 'GET_PRODUCT_ITEM',
@@ -21,7 +24,12 @@ const CONSTANTS = {
     UPDATE_MERCHANT: 'UPDATE_MERCHANT',
     DELETE_MERCHANT: 'DELETE_MERCHANT',
 
+    /* order */
+    GET_ORDER_LIST: 'GET_ORDER_LIST',
+    GET_ORDER_ITEM: 'GET_ORDER_ITEM',
 
+    CREATE_ORDER: 'CREATE_ORDER',
+    UPDATE_ORDER: 'UPDATE_ORDER',
 
 
     /* array list */

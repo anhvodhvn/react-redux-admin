@@ -1,44 +1,11 @@
-html {
-  font-family: 'Roboto', sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-
-body, h1, h2, h3, h4, h5, h6 {
-  font-size: 15px;
-  margin: 0;
-  line-height: 24px;
-}
-
-body {
-  margin: 0;
-  background-color: #efefef;
-}
-
-body, html, #app, #app > div{
-  height: 100%;
-}
-
-a {
-  color: #ff4081;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-.m-b-15 {
-  margin-bottom: 15px
-}
-
-
+/* File Upload */
 .file-upload {
   h5 {
     margin-top: 38px;
     color: rgba(0, 0, 0, 0.3);
     font-weight: 500;
   }
-
+  
   .fileInput {
     border-bottom: 4px solid lightgray;
     border-right: 4px solid lightgray;
@@ -49,7 +16,7 @@ a:hover {
     cursor: pointer;
     width: 280px;
   }
-    
+      
   .imgPreview {
     text-align: center;
     margin: 5px 15px;
@@ -64,12 +31,12 @@ a:hover {
       height: 100%;
     }
   }
-    
+      
   .previewText {
     width: 100%;
     margin-top: 20px;
   }
-    
+      
   .submitButton {
     padding: 12px;
     margin-left: 10px;
@@ -83,7 +50,7 @@ a:hover {
       background: #efefef;
     }
   }
-
+  
   .centerText {
     text-align: center;
     width: 500px;
