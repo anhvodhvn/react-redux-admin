@@ -18,14 +18,15 @@ class PageBase extends React.Component {
           <h3 style={globalStyles.title}>{title}</h3>
 
           <Divider/>
-          {props.children}
+          {children}
 
           <div style={globalStyles.clear}/>
 
         </Paper>
       </div>
     );
-};
+  }
+}
 
 PageBase.propTypes = {
   title: PropTypes.string,
