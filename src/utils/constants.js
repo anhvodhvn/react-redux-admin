@@ -4,6 +4,9 @@ const CONSTANTS = {
         //NODE_ENV: 'development'
     },
 
+    /* loading */
+    TOGGLE_LOADING: 'TOGGLE_LOADING',
+
     /* product */
     GET_PRODUCT_LIST: 'GET_PRODUCT_LIST',
     GET_PRODUCT_ITEM: 'GET_PRODUCT_ITEM',
