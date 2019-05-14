@@ -2,12 +2,6 @@ import Q from 'q';
 import CONSTANTS from '../utils/constants';
 const { TOGGLE_LOADING } = CONSTANTS;
 
-export function toggleLoading() {
-    return {
-        type: TOGGLE_LOADING
-    };
-}
-
 export const toggleLoadingModal = (status) => {
     return {
         type: TOGGLE_LOADING,
