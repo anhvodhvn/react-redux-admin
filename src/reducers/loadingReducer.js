@@ -1,8 +1,8 @@
-import CONSTANTS from '../../../utils/constants';
+import CONSTANTS from '../utils/constants';
 const { TOGGLE_LOADING } = CONSTANTS;
 
 const INITIAL_STATE = {
-    isShow: false,
+    loading: false,
 };
 
 export default function(state = INITIAL_STATE, action){
@@ -10,7 +10,7 @@ export default function(state = INITIAL_STATE, action){
     case TOGGLE_LOADING:
         return {
             ...state, 
-            isShow: (action.payload) ? action.payload : !state.isShow
+            loading: (action.payload) ? action.payload : !state.loading
         };
     default:
         return state;
