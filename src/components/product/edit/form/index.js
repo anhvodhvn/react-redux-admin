@@ -10,7 +10,7 @@ import SelectField from 'material-ui/SelectField';
 import Toggle from 'material-ui/Toggle';
 import DatePicker from 'material-ui/DatePicker';
 import Divider from 'material-ui/Divider';
-import ImageUpload from '../../../base/ImageUpload';
+import ImageUpload from '../../../base/imageUpload';
 
 import validate from './validate';
 
