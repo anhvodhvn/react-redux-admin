@@ -28,14 +28,16 @@ export const getProductItem = function(id) {
             let { product } = res.data;
             dispatch({ 
                 type: GET_PRODUCT_ITEM, 
-                payload: product 
+                payload: product
             });
+            return res.data;
         })
         .catch((err) => {
             dispatch({ 
                 type: GET_PRODUCT_ITEM, 
                 payload: err 
             });
+            throw err;
         });
     };
 };

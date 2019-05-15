@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import moment from 'moment';
 
 import ProductEditFrom from './form';
 
@@ -20,22 +21,28 @@ class ProductEdit extends Component {
         loading(() => getProductItem(id));
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
+    handleSubmit(values) {
+        let { id, editProduct, loading } = this.props;
+        let { ProductName, CategoryId, LocationId, Price, ExpirationDate1, IsInventory, Disabled } = values;
         let product = {
-            id: 'b95e9f80-67f7-11e9-863b-d30e0d39d98b',
-            name: 'Macbook Air Ultimate 2025',
-            image: 'https://s3.amazonaws.com/aws-product-images/product/working.jpg'
+            id: id,
+            name: ProductName,
+            categoryId: CategoryId,
+            locationId: LocationId,
+            price: Number(Price),
+            expirationDate: moment(ExpirationDate1).format('YYYY-MM-DD HH:mm:ss'),
+            isInventory: IsInventory,
+            disabled: Disabled
         };
-        let { editProduct } = this.props;
-        return editProduct(product);
+        loading(() => editProduct(product));
     }
 
     render() {
-        const { product } = this.props;
+        const { product: { Id, ImageUrl } } = this.props;
         return (
             <ProductEditFrom  onSubmit={this.handleSubmit}
-                              product={product}
+                              Id={Id}
+                              ImageUrl={ImageUrl}
                               locationList={CONSTANTS.LOCATION}
                               categoryList={CONSTANTS.CATEGORY} />
         );

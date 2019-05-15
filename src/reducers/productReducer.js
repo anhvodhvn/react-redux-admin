@@ -3,7 +3,10 @@ const { GET_PRODUCT_LIST, GET_PRODUCT_ITEM } = CONSTANTS;
 
 const INITIAL_STATE = {
   productList: [],
-  productItem: {}
+  productItem: {
+    Location: {},
+    Category: {}
+  }
 };
 
 export default function(state = INITIAL_STATE, action){
