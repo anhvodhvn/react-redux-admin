@@ -10,6 +10,10 @@ const styles = {
     color: grey400,
     fontWeight: 100
   },
+  checkboxLabel: {
+    color: grey400,
+    fontWeight: 100
+  },
   buttons: {
     marginTop: 30,
     float: 'right'

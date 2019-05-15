@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Field, reduxForm } from 'redux-form';
-import moment from 'moment';
 
 import MenuItem from 'material-ui/MenuItem';
 //import { RadioButton } from 'material-ui/RadioButton';
@@ -11,7 +10,7 @@ import Divider from 'material-ui/Divider';
 
 import ImageUpload from '../../../base/imageUpload';
 import {
-    // Checkbox,
+    Checkbox,
     // RadioButtonGroup,
     SelectField,
     TextField,
@@ -41,9 +40,14 @@ let ProductEditForm = (props) => {
             </Field>
 
             <Field name="ExpirationDate1" component={DatePicker} format={null} hintText="Expiration Date" floatingLabelText="Expiration Date" fullWidth={true} />
-            {/* <DatePicker hintText="Expiration Date" floatingLabelText="Expiration Date" fullWidth={true} value={expiration} /> */}
 
             <Field name="Price" component={TextField} hintText="Price" floatingLabelText="Price" fullWidth={true} />
+
+            <div style={styles.toggleDiv}>
+                <Field name="IsInventory" component={Checkbox} label="Products still existed inventory!" labelStyle={styles.checkboxLabel} />
+            </div>
+
+            <Divider/>
 
             <div style={styles.toggleDiv}>
                 <Field name="Disabled" component={Toggle} label="Disabled" labelStyle={styles.toggleLabel} />

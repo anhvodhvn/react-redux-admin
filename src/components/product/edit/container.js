@@ -23,7 +23,7 @@ class ProductEdit extends Component {
 
     handleSubmit(values) {
         let { id, editProduct, loading } = this.props;
-        let { ProductName, CategoryId, LocationId, Price, ExpirationDate1, Disabled } = values;
+        let { ProductName, CategoryId, LocationId, Price, ExpirationDate1, IsInventory, Disabled } = values;
         let product = {
             id: id,
             name: ProductName,
@@ -31,6 +31,7 @@ class ProductEdit extends Component {
             locationId: LocationId,
             price: Number(Price),
             expirationDate: moment(ExpirationDate1).format('YYYY-MM-DD HH:mm:ss'),
+            isInventory: IsInventory,
             disabled: Disabled
         };
         loading(() => editProduct(product));
