@@ -20,22 +20,26 @@ class ProductEdit extends Component {
         loading(() => getProductItem(id));
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
+    handleSubmit(values) {
+        let { id, editProduct, loading } = this.props;
+        let { ProductName, CategoryId, LocationId, Price } = values;
         let product = {
-            id: 'b95e9f80-67f7-11e9-863b-d30e0d39d98b',
-            name: 'Macbook Air Ultimate 2025',
+            id: id,
+            name: ProductName,
+            categoryId: CategoryId,
+            locationId: LocationId,
+            price: Price,
             image: 'https://s3.amazonaws.com/aws-product-images/product/working.jpg'
         };
-        let { editProduct } = this.props;
-        return editProduct(product);
+        loading(() => editProduct(product));
     }
 
     render() {
-        const { product } = this.props;
+        const { product: { Id, ImageUrl } } = this.props;
         return (
             <ProductEditFrom  onSubmit={this.handleSubmit}
-                              product={product}
+                              Id={Id}
+                              ImageUrl={ImageUrl}
                               locationList={CONSTANTS.LOCATION}
                               categoryList={CONSTANTS.CATEGORY} />
         );

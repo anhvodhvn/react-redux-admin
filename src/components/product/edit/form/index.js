@@ -1,61 +1,55 @@
 import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { reduxForm } from 'redux-form';
-import moment from 'moment';
+import { Field, reduxForm } from 'redux-form';
 
-import RaisedButton from 'material-ui/RaisedButton';
 import MenuItem from 'material-ui/MenuItem';
-import TextField from 'material-ui/TextField';
-import SelectField from 'material-ui/SelectField';
-import Toggle from 'material-ui/Toggle';
-import DatePicker from 'material-ui/DatePicker';
+//import { RadioButton } from 'material-ui/RadioButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
+
 import ImageUpload from '../../../base/imageUpload';
+import {
+    // Checkbox,
+    // RadioButtonGroup,
+    SelectField,
+    TextField,
+    // Toggle,
+    // DatePicker
+  } from 'redux-form-material-ui';
 
 import validate from './validate';
 
 import styles from '../styles';
 
-const ProductEditForm = (props) => {
+let ProductEditForm = (props) => {
     let { 
         handleSubmit, locationList, categoryList,
-        product: {
-            Id: id,
-            ProductName: name,
-            ImageUrl: imageUrl,
-            ExpirationDate: expiration,
-            Location: location,
-            Category: category,
-            Price: price
-        } 
+        Id, ImageUrl,
     } = props;
-    expiration = expiration ? new Date(moment(expiration).format('YYYY-MM-DD')) : null;
-    location = location ? parseInt(location.Code) : null;
-    category = category ? parseInt(category.Code) : null;
-    price = price ? parseInt(price) : 0;
     return (
         <form onSubmit={handleSubmit}>
-            <TextField hintText="Name" floatingLabelText="Name" fullWidth={true} value={name || ''} />
+            <Field name="ProductName" component={TextField} hintText="Name" floatingLabelText="Name" fullWidth={true} />
 
-            <SelectField floatingLabelText="City" fullWidth={true} value={location}>
+            <Field name="LocationId" component={SelectField} hintText="City" floatingLabelText="City" fullWidth={true}>
                 { locationList.map((item) => <MenuItem key={item.Code} value={item.Code} primaryText={item.Name}/>) }
-            </SelectField>
+            </Field>
 
-            <SelectField floatingLabelText="Category" fullWidth={true} value={category}>
+            <Field name="CategoryId" component={SelectField} hintText="Category" floatingLabelText="Category" fullWidth={true}>
                 { categoryList.map((item) => <MenuItem key={item.Code} value={item.Code} primaryText={item.Name}/>) }
-            </SelectField>
+            </Field>
 
-            <DatePicker hintText="Expiration Date" floatingLabelText="Expiration Date" fullWidth={true} value={expiration} />
+            {/* <DatePicker hintText="Expiration Date" floatingLabelText="Expiration Date" fullWidth={true} value={expiration} /> */}
 
-            <TextField hintText="Price" floatingLabelText="Price" fullWidth={true} value={price}/>
+            <Field name="Price" component={TextField} hintText="Price" floatingLabelText="Price" fullWidth={true} />
 
-            <div style={styles.toggleDiv}>
+            {/* <div style={styles.toggleDiv}>
                 <Toggle label="Disabled" labelStyle={styles.toggleLabel} />
-            </div>
+            </div> */}
 
-            <Divider/>
+            {/* <Divider/> */}
 
-            <ImageUpload productId={id || ''} imageUrl={imageUrl || ''} />
+            <ImageUpload productId={Id || ''} imageUrl={ImageUrl || ''} />
 
             <Divider/>
 
@@ -72,12 +66,24 @@ const ProductEditForm = (props) => {
   
 ProductEditForm.propTypes = {
     handleSubmit: PropTypes.func,
-    product: PropTypes.object,
+    Id: PropTypes.string,
+    ImageUrl: PropTypes.string,
     locationList: PropTypes.array,
     categoryList: PropTypes.array
 };
 
-export default reduxForm({
+ProductEditForm = reduxForm({
     form: 'ProductEditForm',
-    validate
+    validate,
+    enableReinitialize: true
 })(ProductEditForm);
+
+const mapStateToProps = (props) => ({
+    initialValues: { 
+        ...props.productReducer.productItem,
+        LocationId: props.productReducer.productItem.Location.Code || props.productReducer.productItem.Location.Id,
+        CategoryId: props.productReducer.productItem.Category.Code || props.productReducer.productItem.Category.Id
+    },
+});
+
+export default connect(mapStateToProps)(ProductEditForm);
