@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import ProductEditFrom from './form';
 
+import { loading } from '../../../actions/loading';
 import { getProductItem, editProduct } from '../../../actions/product';
 import CONSTANTS from '../../../utils/constants';
 
@@ -15,8 +16,8 @@ class ProductEdit extends Component {
     }
 
     componentDidMount() {
-        let { id, getProductItem } = this.props;
-        return getProductItem(id);
+        let { id, getProductItem, loading } = this.props;
+        loading(() => getProductItem(id));
     }
 
     handleSubmit(e) {
@@ -44,6 +45,7 @@ class ProductEdit extends Component {
 ProductEdit.propTypes = {
     id: PropTypes.string,
     product: PropTypes.object,
+    loading: PropTypes.func,
     getProductItem: PropTypes.func,
     editProduct: PropTypes.func
 };
@@ -57,6 +59,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => (
     bindActionCreators({
+        loading,
         getProductItem,
         editProduct
     }, dispatch)
