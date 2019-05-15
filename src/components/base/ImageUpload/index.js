@@ -1,5 +1,20 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { loading } from '../../../actions/loading';
 import { uploadProductImage, updateProductImage } from '../../../actions/product';
+
+const uploadImage = function(selectedFile, productId){
+  return uploadProductImage(selectedFile)
+  .then(function(data) {
+    let { url } = data;
+    return updateProductImage(productId, url);
+  })
+  .catch(function(error) {
+    alert('ERROR:', JSON.stringify(error));
+  });
+};
 
 // https://codepen.io/hartzis/pen/VvNGZP
 class ImageUpload extends Component {
@@ -8,21 +23,14 @@ class ImageUpload extends Component {
     this.state = {file: '',imagePreviewUrl: ''};
   }
   
-  _handleSubmit() {
+  _handleSubmitImage() {
     //e.preventDefault();
     //TODO: do something with -> this.state.file
     //console.log('handle uploading-', this.state.file);
 
-    let { productId } = this.props;
+    let { productId, loading } = this.props;
     let selectedFile = this.state.file;
-    return uploadProductImage(selectedFile)
-    .then(function(data) {
-      let { url } = data;
-      return updateProductImage(productId, url);
-    })
-    .catch(function(error) {
-      alert('ERROR:', JSON.stringify(error));
-    });
+    loading(() => uploadImage(selectedFile, productId));
   }
   
   _handleImageChange(e) {
@@ -55,7 +63,7 @@ class ImageUpload extends Component {
         <h5>Image Upload & Preview</h5>
         <div>
           <input className="fileInput" type="file" onChange={(e)=>this._handleImageChange(e)} />
-          <button className="submitButton" type="button" onClick={(e)=>this._handleSubmit(e)}>Upload Image</button>
+          <button className="submitButton" type="button" onClick={(e)=>this._handleSubmitImage(e)}>Upload Image</button>
         </div>
         <div className="imgPreview">
           {$imagePreview}
@@ -68,6 +76,13 @@ class ImageUpload extends Component {
 ImageUpload.propTypes = {
   productId: PropTypes.string,
   imageUrl: PropTypes.string,
+  loading: PropTypes.func
 };
 
-export default ImageUpload;
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    loading
+  }, dispatch)
+);
+
+export default connect(null, mapDispatchToProps)(ImageUpload);
