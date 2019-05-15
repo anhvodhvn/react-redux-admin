@@ -29,7 +29,7 @@ class ProductEdit extends Component {
             categoryId: CategoryId,
             locationId: LocationId,
             price: Number(Price),
-            image: 'https://s3.amazonaws.com/aws-product-images/product/working.jpg'
+            disabled: false
         };
         loading(() => editProduct(product));
     }
