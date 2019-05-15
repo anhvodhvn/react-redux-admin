@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import moment from 'moment';
 
 import ProductEditFrom from './form';
 
@@ -22,14 +23,15 @@ class ProductEdit extends Component {
 
     handleSubmit(values) {
         let { id, editProduct, loading } = this.props;
-        let { ProductName, CategoryId, LocationId, Price } = values;
+        let { ProductName, CategoryId, LocationId, Price, ExpirationDate1, Disabled } = values;
         let product = {
             id: id,
             name: ProductName,
             categoryId: CategoryId,
             locationId: LocationId,
             price: Number(Price),
-            disabled: false
+            expirationDate: moment(ExpirationDate1).format('YYYY-MM-DD HH:mm:ss'),
+            disabled: Disabled
         };
         loading(() => editProduct(product));
     }

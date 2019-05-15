@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { Field, reduxForm } from 'redux-form';
+import moment from 'moment';
 
 import MenuItem from 'material-ui/MenuItem';
 //import { RadioButton } from 'material-ui/RadioButton';
@@ -14,8 +15,8 @@ import {
     // RadioButtonGroup,
     SelectField,
     TextField,
-    // Toggle,
-    // DatePicker
+    Toggle,
+    DatePicker
   } from 'redux-form-material-ui';
 
 import validate from './validate';
@@ -39,15 +40,16 @@ let ProductEditForm = (props) => {
                 { categoryList.map((item) => <MenuItem key={item.Code} value={item.Code} primaryText={item.Name}/>) }
             </Field>
 
+            <Field name="ExpirationDate1" component={DatePicker} format={null} hintText="Expiration Date" floatingLabelText="Expiration Date" fullWidth={true} />
             {/* <DatePicker hintText="Expiration Date" floatingLabelText="Expiration Date" fullWidth={true} value={expiration} /> */}
 
             <Field name="Price" component={TextField} hintText="Price" floatingLabelText="Price" fullWidth={true} />
 
-            {/* <div style={styles.toggleDiv}>
-                <Toggle label="Disabled" labelStyle={styles.toggleLabel} />
-            </div> */}
+            <div style={styles.toggleDiv}>
+                <Field name="Disabled" component={Toggle} label="Disabled" labelStyle={styles.toggleLabel} />
+            </div>
 
-            {/* <Divider/> */}
+            <Divider/>
 
             <ImageUpload productId={Id || ''} imageUrl={ImageUrl || ''} />
 
@@ -82,7 +84,8 @@ const mapStateToProps = (props) => ({
     initialValues: { 
         ...props.productReducer.productItem,
         LocationId: props.productReducer.productItem.Location.Code || props.productReducer.productItem.Location.Id,
-        CategoryId: props.productReducer.productItem.Category.Code || props.productReducer.productItem.Category.Id
+        CategoryId: props.productReducer.productItem.Category.Code || props.productReducer.productItem.Category.Id,
+        ExpirationDate1: props.productReducer.productItem.ExpirationDate ? new Date(props.productReducer.productItem.ExpirationDate) : null,
     },
 });
 
