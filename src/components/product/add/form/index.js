@@ -7,7 +7,7 @@ import MenuItem from 'material-ui/MenuItem';
 
 import renderTextField from '../../../base/renderTextField';
 import renderSelectField from '../../../base/renderSelectField';
-import ErrorMessage from "../../../base/ErrorMessage";
+import ErrorMessage from "../../../base/errorMessage";
 
 import validate from './validate';
 
