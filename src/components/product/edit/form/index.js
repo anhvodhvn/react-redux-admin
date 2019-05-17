@@ -9,9 +9,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
 
 import ImageUpload from '../../../base/imageUpload';
+import renderRadioGroup from '../../controls/renderRadionGroup';
 import {
     Checkbox,
-    RadioButtonGroup,
     SelectField,
     TextField,
     Toggle,
@@ -49,7 +49,7 @@ let ProductEditForm = (props) => {
 
             <Divider/>
 
-            <Field name="InventoryStatus" component={RadioButtonGroup} style={styles.radiogroupDiv}>
+            <Field name="InventoryStatus" component={renderRadioGroup} style={styles.radiogroupDiv}>
                 { inventoryStatusList.map((status) => <RadioButton key={status.Code} value={status.Code} label={status.Name} labelStyle={styles.radioLabel}/>) }
             </Field>
 
