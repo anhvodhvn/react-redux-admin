@@ -49,6 +49,10 @@ const CONSTANTS = {
         {
             Code: 4,
             Name: 'Channel & Perfume'
+        },
+        {
+            Code: 5,
+            Name: 'Food & Drink'
         }
     ],
     LOCATION: [
