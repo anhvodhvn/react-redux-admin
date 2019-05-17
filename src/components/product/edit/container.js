@@ -23,7 +23,7 @@ class ProductEdit extends Component {
 
     handleSubmit(values) {
         let { id, editProduct, loading } = this.props;
-        let { ProductName, CategoryId, LocationId, Price, ExpirationDate1, IsInventory, Disabled } = values;
+        let { ProductName, CategoryId, LocationId, Price, ExpirationDate1, InventoryStatus, IsPublished, Disabled } = values;
         let product = {
             id: id,
             name: ProductName,
@@ -31,9 +31,11 @@ class ProductEdit extends Component {
             locationId: LocationId,
             price: Number(Price),
             expirationDate: moment(ExpirationDate1).format('YYYY-MM-DD HH:mm:ss'),
-            isInventory: IsInventory,
+            inventoryStatus: InventoryStatus,
+            isPublished: IsPublished,
             disabled: Disabled
         };
+        console.log('- product:', product);
         loading(() => editProduct(product));
     }
 
@@ -44,7 +46,8 @@ class ProductEdit extends Component {
                               Id={Id}
                               ImageUrl={ImageUrl}
                               locationList={CONSTANTS.LOCATION}
-                              categoryList={CONSTANTS.CATEGORY} />
+                              categoryList={CONSTANTS.CATEGORY}
+                              inventoryStatusList={CONSTANTS.INVENTORY_STATUS} />
         );
     }
 }

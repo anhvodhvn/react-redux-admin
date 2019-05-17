@@ -72,6 +72,20 @@ const CONSTANTS = {
             Code: 5,
             Name: 'Turin'
         }
+    ],
+    INVENTORY_STATUS: [
+        {
+            Code: 1,
+            Name: 'Upcomming'
+        },
+        {
+            Code: 2,
+            Name: 'Inventory'
+        },
+        {
+            Code: 3,
+            Name: 'SaleOff'
+        }
     ]
 };
 
