@@ -35,7 +35,6 @@ class ProductEdit extends Component {
             isPublished: IsPublished,
             disabled: Disabled
         };
-        console.log('- product:', product);
         loading(() => editProduct(product));
     }
 
