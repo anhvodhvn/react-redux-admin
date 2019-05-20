@@ -13,10 +13,7 @@ export const getProductList = function() {
             });
         })
         .catch((err) => {
-            dispatch({ 
-                type: GET_PRODUCT_LIST, 
-                payload: err 
-            });
+            throw err;
         });
     };
 };
@@ -33,10 +30,6 @@ export const getProductItem = function(id) {
             return res.data;
         })
         .catch((err) => {
-            dispatch({ 
-                type: GET_PRODUCT_ITEM, 
-                payload: err 
-            });
             throw err;
         });
     };
@@ -54,10 +47,6 @@ export const addProduct = (data) => {
             return res;
         })
         .catch((err) => {
-            dispatch({
-                type: CREATE_PRODUCT, 
-                payload: err
-            });
             throw err;
         });
     };
@@ -75,10 +64,6 @@ export const editProduct = (data) => {
             return res;
         })
         .catch((err) => {
-            dispatch({
-                type: UPDATE_PRODUCT, 
-                payload: err
-            });
             throw err;
         });
     };

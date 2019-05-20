@@ -5,9 +5,9 @@ import { Field, reduxForm } from 'redux-form';
 import RaisedButton from 'material-ui/RaisedButton';
 import MenuItem from 'material-ui/MenuItem';
 
-import renderTextField from '../../../base/renderTextField';
-import renderSelectField from '../../../base/renderSelectField';
-import ErrorMessage from "../../../base/errorMessage";
+import ErrorMessage from '../../../base/errorMessage';
+import renderTextField from '../../controls/renderTextField';
+import renderSelectField from '../../controls/renderSelectField';
 
 import validate from './validate';
 

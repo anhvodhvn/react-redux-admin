@@ -4,14 +4,14 @@ import { Link } from 'react-router';
 import { Field, reduxForm } from 'redux-form';
 
 import MenuItem from 'material-ui/MenuItem';
-//import { RadioButton } from 'material-ui/RadioButton';
+import { RadioButton } from 'material-ui/RadioButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
 
 import ImageUpload from '../../../base/imageUpload';
+import renderRadioGroup from '../../controls/renderRadionGroup';
 import {
     Checkbox,
-    // RadioButtonGroup,
     SelectField,
     TextField,
     Toggle,
@@ -24,7 +24,7 @@ import styles from '../styles';
 
 let ProductEditForm = (props) => {
     let { 
-        handleSubmit, locationList, categoryList,
+        handleSubmit, locationList, categoryList, inventoryStatusList,
         Id, ImageUrl,
     } = props;
     return (
@@ -44,13 +44,19 @@ let ProductEditForm = (props) => {
             <Field name="Price" component={TextField} hintText="Price" floatingLabelText="Price" fullWidth={true} />
 
             <div style={styles.toggleDiv}>
-                <Field name="IsInventory" component={Checkbox} label="Products still existed inventory!" labelStyle={styles.checkboxLabel} />
+                <Field name="Disabled" component={Toggle} label="Disabled" labelStyle={styles.toggleLabel} />
             </div>
 
             <Divider/>
 
-            <div style={styles.toggleDiv}>
-                <Field name="Disabled" component={Toggle} label="Disabled" labelStyle={styles.toggleLabel} />
+            <Field name="InventoryStatus" component={renderRadioGroup} style={styles.radiogroupDiv}>
+                { inventoryStatusList.map((status) => <RadioButton key={status.Code} value={status.Code} label={status.Name} labelStyle={styles.radioLabel}/>) }
+            </Field>
+
+            <Divider/>
+
+            <div style={styles.checkboxDiv}>
+                <Field name="IsPublished" component={Checkbox} label="Product is published!" labelStyle={styles.checkboxLabel} />
             </div>
 
             <Divider/>
@@ -75,7 +81,8 @@ ProductEditForm.propTypes = {
     Id: PropTypes.string,
     ImageUrl: PropTypes.string,
     locationList: PropTypes.array,
-    categoryList: PropTypes.array
+    categoryList: PropTypes.array,
+    inventoryStatusList: PropTypes.array,
 };
 
 ProductEditForm = reduxForm({
@@ -87,8 +94,8 @@ ProductEditForm = reduxForm({
 const mapStateToProps = (props) => ({
     initialValues: { 
         ...props.productReducer.productItem,
-        LocationId: props.productReducer.productItem.Location.Code || props.productReducer.productItem.Location.Id,
-        CategoryId: props.productReducer.productItem.Category.Code || props.productReducer.productItem.Category.Id,
+        LocationId: props.productReducer.productItem.Location ? (props.productReducer.productItem.Location.Code || props.productReducer.productItem.Location.Id) : '',
+        CategoryId: props.productReducer.productItem.Category ? (props.productReducer.productItem.Category.Code || props.productReducer.productItem.Category.Id) : '',
         ExpirationDate1: props.productReducer.productItem.ExpirationDate ? new Date(props.productReducer.productItem.ExpirationDate) : null,
     },
 });
