@@ -27,7 +27,7 @@ const styles = {
     flexDirection: 'row',
     maxWidth: 300,
     marginTop: 40,
-    marginBottom: 40
+    marginBottom: 10
   },
   radioLabel: {
     color: grey400,

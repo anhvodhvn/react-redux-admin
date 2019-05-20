@@ -89,6 +89,10 @@ const CONSTANTS = {
         {
             Code: 3,
             Name: 'SaleOff'
+        },
+        {
+            Code: 4,
+            Name: 'Empty'
         }
     ]
 };
