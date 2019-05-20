@@ -94,8 +94,8 @@ ProductEditForm = reduxForm({
 const mapStateToProps = (props) => ({
     initialValues: { 
         ...props.productReducer.productItem,
-        LocationId: props.productReducer.productItem.Location.Code || props.productReducer.productItem.Location.Id,
-        CategoryId: props.productReducer.productItem.Category.Code || props.productReducer.productItem.Category.Id,
+        LocationId: props.productReducer.productItem.Location ? (props.productReducer.productItem.Location.Code || props.productReducer.productItem.Location.Id) : '',
+        CategoryId: props.productReducer.productItem.Category ? (props.productReducer.productItem.Category.Code || props.productReducer.productItem.Category.Id) : '',
         ExpirationDate1: props.productReducer.productItem.ExpirationDate ? new Date(props.productReducer.productItem.ExpirationDate) : null,
     },
 });
