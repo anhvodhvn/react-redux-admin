@@ -1,6 +1,6 @@
 const handleErrorMessage = (response) => {
-    let { data, status, statusText } = response;
-    let error = data.error ? data.error : `${status}: ${statusText}`;
+    let { data: { code, message }, status, statusText } = response;
+    let error = (code && message) ? `${status}: ${code} - ${message}` : `${status}: ${statusText}`;
     return error;
 };
 
