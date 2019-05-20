@@ -35,46 +35,116 @@ const CONSTANTS = {
     /* array list */
     CATEGORY: [
         {
+            Id: 1,
             Code: 1,
             Name: 'Laptop - Computer'
         },
         {
+            Id: 2,
             Code: 2,
             Name: 'Mobile Phone'
         },
         {
+            Id: 3,
             Code: 3,
-            Name: 'Clothes & Fashion'
+            Name: 'Clothes'
         },
         {
+            Id: 4,
             Code: 4,
-            Name: 'Channel & Perfume'
+            Name: 'Channel - Fragrance'
         },
         {
+            Id: 5,
             Code: 5,
-            Name: 'Food & Drink'
+            Name: 'Drinking'
+        },
+        {
+            Id: 6,
+            Code: 6,
+            Name: 'Food'
+        },
+        {
+            Id: 7,
+            Code: 7,
+            Name: 'Electricity'
+        },
+        {
+            Id: 8,
+            Code: 8,
+            Name: 'Skin Healths'
+        },
+        {
+            Id: 9,
+            Code: 9,
+            Name: 'Fashion'
+        },
+        {
+            Id: 10,
+            Code: 10,
+            Name: 'Car'
         }
     ],
     LOCATION: [
         {
+            Id: 1,
             Code: 1,
             Name: 'London'
         },
         {
+            Id: 2,
             Code: 2,
             Name: 'Paris'
         },
         {
+            Id: 3,
             Code: 3,
             Name: 'Rome'
         },
         {
+            Id: 4,
             Code: 4,
             Name: 'Milan'
         },
         {
+            Id: 5,
             Code: 5,
             Name: 'Turin'
+        },
+        {
+            Id: 6,
+            Code: 6,
+            Name: 'New York'
+        },
+        {
+            Id: 7,
+            Code: 7,
+            Name: 'Manchester'
+        },
+        {
+            Id: 8,
+            Code: 8,
+            Name: 'Istanbul'
+        },
+        {
+            Id: 9,
+            Code: 9,
+            Name: 'Miami'
+        },
+        {
+            Id: 10,
+            Code: 10,
+            Name: 'Las Vegas'
+        },
+        {
+            Id: 11,
+            Code: 11,
+            Name: 'Tokyo'
+        },
+        {
+            Id: 12,
+            Code: 12,
+            Name: 'Hong Kong'
         }
     ],
     INVENTORY_STATUS: [
