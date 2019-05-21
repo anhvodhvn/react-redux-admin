@@ -1,6 +1,6 @@
 const validate = values => {
     const errors = {};
-    const requiredFields = ['name', 'price', 'location', 'category'];
+    const requiredFields = ['ProductName', 'LocationId', 'CategoryId', 'ExpirationDate1', 'Price', 'InventoryStatus'];
     requiredFields.forEach(field => {
         if (!values[ field ]) {
             errors[ field ] = 'Required';
