@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 
+import { SubmissionError } from 'redux-form';
 import ProductAddForm from './form';
 
 import { addProduct } from '../../../actions/product';
@@ -33,15 +34,17 @@ class ProductAdd extends Component {
             if (res.status == 200) browserHistory.push('/product');
         })
         .catch(err => {
-            let error = utils.handleErrorMessage(err.response);
-            this.setState({ submitError: { error } });
+            let { response } = err;
+            throw new SubmissionError({
+                code: response.status,
+                _error: utils.handleErrorMessage(response)
+            });
         });
     }
 
     render() {
         return (
             <ProductAddForm onSubmit={this.handleSubmit}
-                            submitError={this.state.submitError}
                             locationList={CONSTANTS.LOCATION}
                             categoryList={CONSTANTS.CATEGORY} />
         );

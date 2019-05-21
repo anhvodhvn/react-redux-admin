@@ -14,7 +14,7 @@ import validate from './validate';
 import styles from '../styles';
 
 const ProductAddForm = (props) => {
-    const { handleSubmit, submitError, locationList, categoryList } = props;
+    const { error, handleSubmit, locationList, categoryList } = props;
     return (
         <form onSubmit={handleSubmit}>
             <Field name="Name" component={renderTextField} label="Name"/>
@@ -29,7 +29,7 @@ const ProductAddForm = (props) => {
 
             <Field name="Price" component={renderTextField} label="Price"/>
 
-            { submitError ? <ErrorMessage errorMessage={submitError.error} /> : null }
+            { error ? <ErrorMessage errorMessage={error} /> : null }
 
             <div style={styles.buttons}>
                 <Link to="/product">
@@ -43,8 +43,8 @@ const ProductAddForm = (props) => {
 };
   
 ProductAddForm.propTypes = {
+    error: PropTypes.string,
     handleSubmit: PropTypes.func,
-    submitError: PropTypes.object,
     locationList: PropTypes.array,
     categoryList: PropTypes.array
 };
