@@ -14,13 +14,16 @@ const styles = {
     },
     columns: {
       id: {
-        width: '10%'
+        width: '5%'
+      },
+      code: {
+        width: '15%'
       },
       name: {
         width: '40%'
       },
       price: {
-        width: '20%'
+        width: '10%'
       },
       category: {
         width: '20%'

@@ -14,22 +14,22 @@ import validate from './validate';
 import styles from '../styles';
 
 const ProductAddForm = (props) => {
-    const { handleSubmit, submitError, locationList, categoryList } = props;
+    const { error, handleSubmit, locationList, categoryList } = props;
     return (
         <form onSubmit={handleSubmit}>
-            <Field name="name" component={renderTextField} label="Name"/>
+            <Field name="Name" component={renderTextField} label="Name"/>
 
-            <Field name="location" component={renderSelectField} label="Location">
+            <Field name="Location" component={renderSelectField} label="Location">
                 { locationList.map((item) => <MenuItem key={item.Code} value={item.Code} primaryText={item.Name}/>) }
             </Field>
 
-            <Field name="category" component={renderSelectField} label="Category">
+            <Field name="Category" component={renderSelectField} label="Category">
                 { categoryList.map((item) => <MenuItem key={item.Code} value={item.Code} primaryText={item.Name}/>) }
             </Field>
 
-            <Field name="price" component={renderTextField} label="Price"/>
+            <Field name="Price" component={renderTextField} label="Price"/>
 
-            { submitError ? <ErrorMessage errorMessage={submitError.error} /> : null }
+            { error ? <ErrorMessage errorMessage={error} /> : null }
 
             <div style={styles.buttons}>
                 <Link to="/product">
@@ -43,8 +43,8 @@ const ProductAddForm = (props) => {
 };
   
 ProductAddForm.propTypes = {
+    error: PropTypes.string,
     handleSubmit: PropTypes.func,
-    submitError: PropTypes.object,
     locationList: PropTypes.array,
     categoryList: PropTypes.array
 };
