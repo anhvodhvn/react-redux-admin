@@ -2,19 +2,14 @@ import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn } from 'material-ui/Table';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentCreate from 'material-ui/svg-icons/content/create';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import { grey200, pink500 } from 'material-ui/styles/colors';
+import { pink500 } from 'material-ui/styles/colors';
+import ProductList from './list';
 
 import { getProductList } from '../../actions/product';
 import { loading } from '../../actions/loading';
 import styles from './styles';
-
-const LinkEdit = (id) => {
-    return `/product/edit/${id}`;
-};
 
 class Products extends Component {
     constructor(props) {
@@ -36,40 +31,7 @@ class Products extends Component {
                     </FloatingActionButton>
                 </Link>
 
-                <Table>
-                    <TableHeader>
-                        <TableRow>
-                            <TableHeaderColumn style={styles.columns.id}>No.</TableHeaderColumn>
-                            <TableHeaderColumn style={styles.columns.code}>ID</TableHeaderColumn>
-                            <TableHeaderColumn style={styles.columns.name}>Name</TableHeaderColumn>
-                            <TableHeaderColumn style={styles.columns.price}>Price</TableHeaderColumn>
-                            <TableHeaderColumn style={styles.columns.category}>Category</TableHeaderColumn>
-                            <TableHeaderColumn style={styles.columns.edit}>Edit</TableHeaderColumn>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {
-                            (Array.isArray(products) && products.length) ?
-                            products.map((item, index) =>
-                                <TableRow key={index+1}>
-                                    <TableRowColumn style={styles.columns.id}>{index+1}</TableRowColumn>
-                                    <TableRowColumn style={styles.columns.code}>{item.ProductId}</TableRowColumn>
-                                    <TableRowColumn style={styles.columns.name}>{item.ProductName}</TableRowColumn>
-                                    <TableRowColumn style={styles.columns.price}>{item.Price}</TableRowColumn>
-                                    <TableRowColumn style={styles.columns.category}>{item.Category ? item.Category.Name : ''}</TableRowColumn>
-                                    <TableRowColumn style={styles.columns.edit}>
-                                        <Link className="button" to={LinkEdit(item.Id)}>
-                                        <FloatingActionButton zDepth={0} mini={true} backgroundColor={grey200} iconStyle={styles.editButton}>
-                                            <ContentCreate  />
-                                        </FloatingActionButton>
-                                        </Link>
-                                    </TableRowColumn>
-                                </TableRow>
-                            )
-                            : null
-                        }
-                    </TableBody>
-                </Table>
+                <ProductList products={products} />
             </div>
         );
     }
