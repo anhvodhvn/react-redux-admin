@@ -8,6 +8,7 @@ import { RadioButton } from 'material-ui/RadioButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
 
+import ErrorMessage from '../../../base/errorMessage';
 import ImageUpload from '../../../base/imageUpload';
 import renderRadioGroup from '../../controls/renderRadionGroup';
 import {
@@ -24,7 +25,7 @@ import styles from '../styles';
 
 let ProductEditForm = (props) => {
     let { 
-        handleSubmit, locationList, categoryList, inventoryStatusList,
+        error, handleSubmit, locationList, categoryList, inventoryStatusList,
         Id, ImageUrl,
     } = props;
     return (
@@ -65,6 +66,8 @@ let ProductEditForm = (props) => {
 
             <Divider/>
 
+            { error ? <ErrorMessage errorMessage={error} /> : null }
+
             <div style={styles.buttons}>
                 <Link to="/product">
                     <RaisedButton label="Cancel"/>
@@ -77,6 +80,7 @@ let ProductEditForm = (props) => {
 };
   
 ProductEditForm.propTypes = {
+    error: PropTypes.string,
     handleSubmit: PropTypes.func,
     Id: PropTypes.string,
     ImageUrl: PropTypes.string,

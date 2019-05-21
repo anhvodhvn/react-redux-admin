@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import moment from 'moment';
 
+import { SubmissionError } from 'redux-form';
 import ProductEditFrom from './form';
 
 import { loading } from '../../../actions/loading';
 import { getProductItem, editProduct } from '../../../actions/product';
 import CONSTANTS from '../../../utils/constants';
+import utils from '../../../utils/utils';
 
 class ProductEdit extends Component {
     constructor(props) {
@@ -22,7 +24,7 @@ class ProductEdit extends Component {
     }
 
     handleSubmit(values) {
-        let { id, editProduct, loading } = this.props;
+        let { id, editProduct } = this.props;
         let { ProductName, CategoryId, LocationId, Price, ExpirationDate1, InventoryStatus, IsPublished, Disabled } = values;
         let product = {
             id: id,
@@ -35,7 +37,14 @@ class ProductEdit extends Component {
             isPublished: IsPublished,
             disabled: Disabled
         };
-        loading(() => editProduct(product));
+        return editProduct(product)
+        .catch((err) => {
+            let { response } = err;
+            throw new SubmissionError({
+                code: response.status,
+                _error: utils.handleErrorMessage(response)
+            });
+        });
     }
 
     render() {
