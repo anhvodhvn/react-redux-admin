@@ -13,10 +13,6 @@ import utils from '../../../utils/utils';
 class ProductAdd extends Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            submitError: null
-        };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
