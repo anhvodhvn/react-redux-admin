@@ -4,6 +4,8 @@ import { Field, reduxForm } from 'redux-form';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import MenuItem from 'material-ui/MenuItem';
+import Divider from 'material-ui/Divider';
+import {Toggle} from 'redux-form-material-ui';
 
 import ErrorMessage from '../../../base/errorMessage';
 import renderTextField from '../../controls/renderTextField';
@@ -29,6 +31,12 @@ const ProductAddForm = (props) => {
 
             <Field name="Price" component={renderTextField} label="Price"/>
 
+            <div style={styles.toggleDiv}>
+                <Field name="Active" component={Toggle} label="Active" labelStyle={styles.toggleLabel} />
+            </div>
+
+            <Divider/>
+
             { error ? <ErrorMessage errorMessage={error} /> : null }
 
             <div style={styles.buttons}>
@@ -52,5 +60,7 @@ ProductAddForm.propTypes = {
 
 export default reduxForm({
     form: 'ProductAddForm',
-    validate
+    validate,
+    initialValues: { Active: true },
+    enableReinitialize: true
 })(ProductAddForm);

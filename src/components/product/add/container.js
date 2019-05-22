@@ -17,12 +17,13 @@ class ProductAdd extends Component {
     }
 
     handleSubmit(values) {
-        let { Name, Location, Category, Price } = values;
+        let { Name, Location, Category, Price, Active } = values;
         let product = {
             name: Name,
             locationId: Location,
             categoryId: Category,
-            price: Number(Price)
+            price: Number(Price),
+            active: Active
         };
         let { addProduct } = this.props;
         return addProduct(product)
