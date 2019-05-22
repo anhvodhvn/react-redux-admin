@@ -61,6 +61,5 @@ ProductAddForm.propTypes = {
 export default reduxForm({
     form: 'ProductAddForm',
     validate,
-    initialValues: { Active: true },
-    enableReinitialize: true
+    initialValues: { Active: true }
 })(ProductAddForm);
