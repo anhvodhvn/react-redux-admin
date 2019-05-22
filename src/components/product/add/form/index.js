@@ -14,7 +14,7 @@ import validate from './validate';
 import styles from '../styles';
 
 const ProductAddForm = (props) => {
-    const { error, handleSubmit, locationList, categoryList } = props;
+    const { error, submitting, handleSubmit, locationList, categoryList } = props;
     return (
         <form onSubmit={handleSubmit}>
             <Field name="Name" component={renderTextField} label="Name"/>
@@ -33,10 +33,10 @@ const ProductAddForm = (props) => {
 
             <div style={styles.buttons}>
                 <Link to="/product">
-                    <RaisedButton label="Cancel"/>
+                    <RaisedButton label="Cancel" disabled={submitting}/>
                 </Link>
 
-                <RaisedButton label="Save" style={styles.saveButton} type="submit" primary={true}/>
+                <RaisedButton label="Save" style={styles.saveButton} type="submit" primary={true} disabled={submitting} />
             </div>
         </form>
     );
@@ -44,6 +44,7 @@ const ProductAddForm = (props) => {
   
 ProductAddForm.propTypes = {
     error: PropTypes.string,
+    submitting: PropTypes.bool,
     handleSubmit: PropTypes.func,
     locationList: PropTypes.array,
     categoryList: PropTypes.array
