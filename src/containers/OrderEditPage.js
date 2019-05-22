@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import PageBase from '../components/PageBase';
-import ProductEdit from '../components/product/edit';
+import OrderEdit from '../components/order/edit';
 
-class ProductEditPage extends Component {
+class OrderEditPage extends Component {
   constructor(props) {
       super(props);
   }
@@ -10,19 +10,19 @@ class ProductEditPage extends Component {
   render() {
     const { routeParams: {id} } = this.props;
     return (
-      <PageBase title="Edit Product" navigation="Application / Edit Product">
-        <ProductEdit id={id}/>
+      <PageBase title="Approve/Reject Order" navigation="Application / Approve or Reject Order">
+        <OrderEdit id={id}/>
       </PageBase>
     );
   }
 }
 
-ProductEditPage.propTypes = {
+OrderEditPage.propTypes = {
   routeParams: PropTypes.object
 };
 
-ProductEditPage.contextTypes = {
+OrderEditPage.contextTypes = {
   routeParams: PropTypes.object
 };
 
-export default ProductEditPage;
+export default OrderEditPage;

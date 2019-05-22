@@ -7,6 +7,8 @@ import FormPage from './containers/FormPage';
 import ProductPage from './containers/ProductPage';
 import ProductAddPage from './containers/ProductAddPage';
 import ProductEditPage from './containers/ProductEditPage';
+import OrderPage from './containers/OrderPage';
+import OrderEditPage from './containers/OrderEditPage';
 import Dashboard from './containers/DashboardPage';
 
 export default (
@@ -19,6 +21,8 @@ export default (
       <Route path="product" component={ProductPage}/>
       <Route path="product/add" component={ProductAddPage}/>
       <Route path="product/edit/:id" component={ProductEditPage}/>
+      <Route path="order" component={OrderPage}/>
+      <Route path="order/edit/:id" component={OrderEditPage}/>
       <Route path="*" component={NotFoundPage}/>
     </Route>
   </Route>
