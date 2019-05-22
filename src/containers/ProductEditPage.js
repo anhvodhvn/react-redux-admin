@@ -22,7 +22,7 @@ ProductEditPage.propTypes = {
 };
 
 ProductEditPage.contextTypes = {
-  routeParams: React.PropTypes.object
+  routeParams: PropTypes.object
 };
 
 export default ProductEditPage;
