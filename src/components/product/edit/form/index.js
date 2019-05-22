@@ -44,7 +44,7 @@ let ProductEditForm = (props) => {
             <Field name="Price" component={TextField} hintText="Price" floatingLabelText="Price" fullWidth={true} />
 
             <div style={styles.toggleDiv}>
-                <Field name="Disabled" component={Toggle} label="Disabled" labelStyle={styles.toggleLabel} />
+                <Field name="Active" component={Toggle} label="Active" labelStyle={styles.toggleLabel} />
             </div>
 
             <Divider/>
@@ -56,7 +56,7 @@ let ProductEditForm = (props) => {
             <Divider/>
 
             <div style={styles.checkboxDiv}>
-                <Field name="IsPublished" component={Checkbox} label="Product is published!" labelStyle={styles.checkboxLabel} />
+                <Field name="Recommended" component={Checkbox} label="Product is recommended!" labelStyle={styles.checkboxLabel} />
             </div>
 
             <Divider/>
@@ -99,6 +99,9 @@ const mapStateToProps = (props) => ({
         LocationId: props.productReducer.productItem.Location ? (props.productReducer.productItem.Location.Code || props.productReducer.productItem.Location.Id) : '',
         CategoryId: props.productReducer.productItem.Category ? (props.productReducer.productItem.Category.Code || props.productReducer.productItem.Category.Id) : '',
         ExpirationDate1: props.productReducer.productItem.ExpirationDate ? new Date(props.productReducer.productItem.ExpirationDate) : null,
+        InventoryStatus: props.productReducer.productItem.InventoryStatus ? props.productReducer.productItem.InventoryStatus : 1,
+        Active: props.productReducer.productItem.Active ? props.productReducer.productItem.Active : 1,
+        Recommended: props.productReducer.productItem.Recommended ? props.productReducer.productItem.Recommended : 1,
     },
 });
 
