@@ -1,19 +1,26 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import OrderList from './list';
 
 import { loading } from '../../actions/loading';
+import { getOrderList } from '../../actions/order';
 
 class Orders extends Component {
     constructor(props) {
         super(props);
     }
 
+    componentDidMount() {
+        let { getOrderList, loading } = this.props;
+        loading(() => getOrderList());
+    }
+
     render() {
         let { orders } = this.props;
         return (
             <div>
-                {orders}
+                <OrderList orders={orders} />
             </div>
         );
     }
@@ -21,6 +28,7 @@ class Orders extends Component {
 
 Orders.propTypes = {
     loading: PropTypes.func,
+    getOrderList: PropTypes.func,
     orders: PropTypes.array
 };
 
@@ -33,7 +41,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => (
     bindActionCreators({
-        loading
+        loading,
+        getOrderList
     }, dispatch)
 );
 

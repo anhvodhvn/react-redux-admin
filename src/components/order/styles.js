@@ -14,19 +14,19 @@ const styles = {
     },
     columns: {
       id: {
-        width: '5%'
+        width: '10%'
       },
       code: {
-        width: '15%'
+        width: '20%'
       },
       name: {
         width: '40%'
       },
-      price: {
+      total: {
         width: '10%'
       },
-      category: {
-        width: '20%'
+      currency: {
+        width: '10%'
       },
       edit: {
         width: '10%'
