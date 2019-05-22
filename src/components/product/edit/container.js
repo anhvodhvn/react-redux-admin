@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { browserHistory } from 'react-router';
 import moment from 'moment';
 
 import { SubmissionError } from 'redux-form';
@@ -15,12 +16,17 @@ class ProductEdit extends Component {
     constructor(props) {
         super(props);
 
+        this.handleCancel = this.handleCancel.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
         let { id, getProductItem, loading } = this.props;
         loading(() => getProductItem(id));
+    }
+
+    handleCancel() {
+        browserHistory.push('/product');
     }
 
     handleSubmit(values) {
@@ -51,6 +57,7 @@ class ProductEdit extends Component {
         const { product: { Id, ImageUrl } } = this.props;
         return (
             <ProductEditFrom  onSubmit={this.handleSubmit}
+                              handleCancel={this.handleCancel}
                               Id={Id}
                               ImageUrl={ImageUrl}
                               locationList={CONSTANTS.LOCATION}
