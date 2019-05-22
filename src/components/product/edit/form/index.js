@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import { Field, reduxForm } from 'redux-form';
 
 import MenuItem from 'material-ui/MenuItem';
@@ -25,8 +24,8 @@ import styles from '../styles';
 
 let ProductEditForm = (props) => {
     let { 
-        error, handleSubmit, locationList, categoryList, inventoryStatusList,
-        Id, ImageUrl,
+        error, submitting, handleSubmit, handleCancel, locationList, categoryList, inventoryStatusList,
+        Id, ImageUrl
     } = props;
     return (
         <form onSubmit={handleSubmit}>
@@ -69,11 +68,8 @@ let ProductEditForm = (props) => {
             { error ? <ErrorMessage errorMessage={error} /> : null }
 
             <div style={styles.buttons}>
-                <Link to="/product">
-                    <RaisedButton label="Cancel"/>
-                </Link>
-
-                <RaisedButton label="Save" style={styles.saveButton} type="submit" primary={true} />
+                <RaisedButton label="Cancel" onClick={handleCancel} disabled={submitting} />
+                <RaisedButton label="Save" style={styles.saveButton} type="submit" primary={true} disabled={submitting} />
             </div>
         </form>
     );
@@ -81,7 +77,9 @@ let ProductEditForm = (props) => {
   
 ProductEditForm.propTypes = {
     error: PropTypes.string,
+    submitting: PropTypes.bool,
     handleSubmit: PropTypes.func,
+    handleCancel: PropTypes.func,
     Id: PropTypes.string,
     ImageUrl: PropTypes.string,
     locationList: PropTypes.array,
