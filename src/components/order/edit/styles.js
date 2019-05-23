@@ -40,6 +40,40 @@ const styles = {
   },
   saveButton: {
     marginLeft: 5
+  },
+  approveButton: {
+    marginLeft: 5,
+    marginRight: 5
+  },
+  cancelButton: {
+    marginLeft: 5,
+    marginRight: 5
+  },
+  orderDetail: {
+    fontSize: 24,
+    fontWeight: 300,
+    marginBottom: 20,
+    marginTop: 20
+  },
+  products: {
+    id: {
+      width: '10%'
+    },
+    code: {
+      width: '20%'
+    },
+    name: {
+      width: '40%'
+    },
+    quantity: {
+      width: '10%'
+    },
+    price: {
+      width: '10%'
+    },
+    total: {
+      width: '10%'
+    }
   }
 };
 
