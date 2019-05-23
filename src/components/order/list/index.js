@@ -34,7 +34,7 @@ const OrderList = (props) => {
                             <TableRowColumn style={styles.columns.code}>{item.OrderId}</TableRowColumn>
                             <TableRowColumn style={styles.columns.name}>{item.Merchant.FullName + ' from ' + item.Merchant.Club}</TableRowColumn>
                             <TableRowColumn style={styles.columns.status}>{item.Status}</TableRowColumn>
-                            <TableRowColumn style={styles.columns.total}>{'$' +item.Total + ` (${(item.Currency)})`}</TableRowColumn>
+                            <TableRowColumn style={styles.columns.total}>{item.Total + ` (${(item.Currency)})`}</TableRowColumn>
                             <TableRowColumn style={styles.columns.edit}>
                                 <Link className="button" to={LinkEdit(item.Id)}>
                                     <FloatingActionButton zDepth={0} mini={true} backgroundColor={grey200} iconStyle={styles.editButton}>

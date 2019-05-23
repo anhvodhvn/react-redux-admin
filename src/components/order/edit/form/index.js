@@ -11,21 +11,17 @@ let OrderEditForm = (props) => {
     let { handleApprove, handleReject, handleCancel, OrderId } = props;
     return (
         <form>
-            <Field name="OrderId" component={TextField} hintText="Order Id" floatingLabelText="Order Id" fullWidth={true} />
+            <Field name="OrderId" component={TextField} hintText="Order Id" floatingLabelText="Order Id" fullWidth={true} readOnly={true}/>
 
-            <Field name="MerchantName" component={TextField} hintText="Merchant Name" floatingLabelText="Merchant Name" fullWidth={true} />
-
-            <Field name="MerchantClub" component={TextField} hintText="Merchant Club" floatingLabelText="Merchant Club" fullWidth={true} />
+            <Field name="MerchantInformation" component={TextField} hintText="Merchant Information" floatingLabelText="Merchant Information" fullWidth={true} readOnly={true}/>
             
-            <Field name="Total" component={TextField} hintText="Total" floatingLabelText="Total" fullWidth={true} />
+            <Field name="TotalPrice" component={TextField} hintText="Total Price" floatingLabelText="Total Price" fullWidth={true} readOnly={true}/>
 
-            <Field name="Currency" component={TextField} hintText="Currency" floatingLabelText="Currency" fullWidth={true} />
+            <Field name="Description" component={TextField} hintText="Description" floatingLabelText="Description" fullWidth={true} readOnly={true}/>
 
-            <Field name="Description" component={TextField} hintText="Description" floatingLabelText="Description" fullWidth={true} />
+            <Field name="CreatedAt" component={TextField} hintText="Created At" floatingLabelText="Created At" fullWidth={true} readOnly={true}/>
 
-            <Field name="CreatedAt" component={TextField} hintText="Created At" floatingLabelText="Created At" fullWidth={true} />
-
-            <Field name="Status" component={TextField} hintText="Order Status" floatingLabelText="Order Status" fullWidth={true} />
+            <Field name="Status" component={TextField} hintText="Order Status" floatingLabelText="Order Status" fullWidth={true} readOnly={true}/>
 
             <div style={styles.buttons}>
                 <RaisedButton label="Approve" style={styles.approveButton} type="button" primary={true} onClick={() => handleApprove(OrderId)} />
@@ -51,8 +47,10 @@ OrderEditForm = reduxForm({
 const mapStateToProps = (props) => ({
     initialValues: { 
         ...props.orderReducer.orderItem,
-        MerchantName: props.orderReducer.orderItem.Merchant ? props.orderReducer.orderItem.Merchant.FullName : '',
-        MerchantClub: props.orderReducer.orderItem.Merchant ? props.orderReducer.orderItem.Merchant.Club : ''
+        MerchantInformation: props.orderReducer.orderItem.Merchant ? 
+            (props.orderReducer.orderItem.Merchant.FullName + ', ' + props.orderReducer.orderItem.Merchant.Club) : '',
+        TotalPrice: (props.orderReducer.orderItem.Total && props.orderReducer.orderItem.Currency) ? 
+            (props.orderReducer.orderItem.Total + ` (${(props.orderReducer.orderItem.Currency)})`) : ''
     },
 });
 
