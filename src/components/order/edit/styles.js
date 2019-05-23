@@ -57,21 +57,21 @@ const styles = {
   },
   products: {
     id: {
-      width: '5%'
+      width: '10%'
     },
     code: {
-      width: '15%'
+      width: '20%'
     },
     name: {
       width: '40%'
     },
+    quantity: {
+      width: '10%'
+    },
     price: {
       width: '10%'
     },
-    category: {
-      width: '20%'
-    },
-    edit: {
+    total: {
       width: '10%'
     }
   }

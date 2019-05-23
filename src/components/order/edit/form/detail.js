@@ -9,22 +9,22 @@ import ProductList from './list';
 import styles from '../styles';
 
 let OrderEditForm = (props) => {
-    let { handleApprove, handleReject, handleCancel, OrderId } = props;
+    let { handleApprove, handleReject, handleCancel, OrderId, Products } = props;
     return (
         <form>
             <Field name="OrderId" component={TextField} hintText="Order Id" floatingLabelText="Order Id" fullWidth={true} readOnly={true}/>
 
             <Field name="MerchantInformation" component={TextField} hintText="Merchant Information" floatingLabelText="Merchant Information" fullWidth={true} readOnly={true}/>
-            
+
+            <ProductList products={Products}/>
+
             <Field name="TotalPrice" component={TextField} hintText="Total Price" floatingLabelText="Total Price" fullWidth={true} readOnly={true}/>
-
-            <Field name="Description" component={TextField} hintText="Description" floatingLabelText="Description" fullWidth={true} readOnly={true}/>
-
+            
             <Field name="CreatedAt" component={TextField} hintText="Created At" floatingLabelText="Created At" fullWidth={true} readOnly={true}/>
 
             <Field name="Status" component={TextField} hintText="Order Status" floatingLabelText="Order Status" fullWidth={true} readOnly={true}/>
 
-            <ProductList />
+            <Field name="Description" component={TextField} hintText="Description" floatingLabelText="Description" fullWidth={true} readOnly={true}/>
 
             <div style={styles.buttons}>
                 <RaisedButton label="Approve" style={styles.approveButton} type="button" primary={true} onClick={() => handleApprove(OrderId)} />
@@ -40,6 +40,7 @@ OrderEditForm.propTypes = {
     handleReject: PropTypes.func,
     handleCancel: PropTypes.func,
     OrderId: PropTypes.number,
+    Products: PropTypes.array,
 };
 
 OrderEditForm = reduxForm({
