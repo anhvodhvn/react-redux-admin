@@ -40,6 +40,14 @@ const styles = {
   },
   saveButton: {
     marginLeft: 5
+  },
+  approveButton: {
+    marginLeft: 5,
+    marginRight: 5
+  },
+  cancelButton: {
+    marginLeft: 5,
+    marginRight: 5
   }
 };
 
