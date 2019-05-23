@@ -29,6 +29,8 @@ let ProductEditForm = (props) => {
     } = props;
     return (
         <form onSubmit={handleSubmit}>
+            <Field name="ProductId" component={TextField} hintText="ID" floatingLabelText="ID" fullWidth={true} disabled={true} />
+
             <Field name="ProductName" component={TextField} hintText="Name" floatingLabelText="Name" fullWidth={true} />
 
             <Field name="LocationId" component={SelectField} hintText="City" floatingLabelText="City" fullWidth={true}>

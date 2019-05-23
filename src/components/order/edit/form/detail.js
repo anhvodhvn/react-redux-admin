@@ -12,7 +12,7 @@ let OrderEditForm = (props) => {
     let { handleApprove, handleReject, handleCancel, OrderId, Products } = props;
     return (
         <form>
-            <Field name="OrderId" component={TextField} hintText="Order Id" floatingLabelText="Order Id" fullWidth={true} readOnly={true}/>
+            <Field name="OrderId" component={TextField} hintText="Order Id" floatingLabelText="Order Id" fullWidth={true} disabled={true}/>
 
             <Field name="MerchantInformation" component={TextField} hintText="Merchant Information" floatingLabelText="Merchant Information" fullWidth={true} readOnly={true}/>
 
