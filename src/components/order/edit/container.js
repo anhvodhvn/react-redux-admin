@@ -26,12 +26,12 @@ class OrderEdit extends Component {
         browserHistory.push('/order');
     }
 
-    handleApprove(values) {
-        console.log('- approve values:', values);
+    handleApprove(orderId) {
+        alert(`- approve orderId: ${orderId}`);
     }
 
-    handleReject(values) {
-        console.log('- reject values:', values);
+    handleReject(orderId) {
+        alert(`- reject orderId: ${orderId}`);
     }
 
     render() {
