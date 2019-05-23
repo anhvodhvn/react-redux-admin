@@ -7,7 +7,7 @@ import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
 import {Toggle} from 'redux-form-material-ui';
 
-import ErrorMessage from '../../../base/errorMessage';
+import ErrorMessage from '../../../base/ErrorMessage';
 import renderTextField from '../../controls/renderTextField';
 import renderSelectField from '../../controls/renderSelectField';
 

@@ -7,8 +7,8 @@ import { RadioButton } from 'material-ui/RadioButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
 
-import ErrorMessage from '../../../base/errorMessage';
-import ImageUpload from '../../../base/imageUpload';
+import ErrorMessage from '../../../base/ErrorMessage';
+import ImageUpload from '../../../base/ImageUpload';
 import renderRadioGroup from '../../controls/renderRadionGroup';
 import {
     Checkbox,
