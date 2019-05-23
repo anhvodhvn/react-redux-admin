@@ -13,7 +13,8 @@ class OrderEdit extends Component {
         super(props);
 
         this.handleCancel = this.handleCancel.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleApprove = this.handleApprove.bind(this);
+        this.handleReject = this.handleReject.bind(this);
     }
 
     componentDidMount() {
@@ -25,16 +26,21 @@ class OrderEdit extends Component {
         browserHistory.push('/order');
     }
 
-    handleSubmit(values) {
-        console.log('- values:', values);
+    handleApprove(values) {
+        console.log('- approve values:', values);
+    }
+
+    handleReject(values) {
+        console.log('- reject values:', values);
     }
 
     render() {
-        let { order: { Id } } = this.props;
+        let { order: { OrderId } } = this.props;
         return (
-            <OrderEditForm  onSubmit={this.handleSubmit}
-                            handleCancel={this.handleCancel}
-                            Id={Id} />
+            <OrderEditForm  handleCancel={this.handleCancel}
+                            handleApprove={this.handleApprove}
+                            handleReject={this.handleReject}
+                            OrderId={OrderId} />
         );
     }
 }

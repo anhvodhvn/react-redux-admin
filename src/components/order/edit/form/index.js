@@ -8,9 +8,9 @@ import { TextField } from 'redux-form-material-ui';
 import styles from '../styles';
 
 let OrderEditForm = (props) => {
-    let { handleSubmit, handleCancel } = props;
+    let { handleApprove, handleReject, handleCancel, OrderId } = props;
     return (
-        <form onSubmit={handleSubmit}>
+        <form>
             <Field name="OrderId" component={TextField} hintText="Order Id" floatingLabelText="Order Id" fullWidth={true} />
 
             <Field name="MerchantName" component={TextField} hintText="Merchant Name" floatingLabelText="Merchant Name" fullWidth={true} />
@@ -25,9 +25,11 @@ let OrderEditForm = (props) => {
 
             <Field name="CreatedAt" component={TextField} hintText="Created At" floatingLabelText="Created At" fullWidth={true} />
 
+            <Field name="Status" component={TextField} hintText="Order Status" floatingLabelText="Order Status" fullWidth={true} />
+
             <div style={styles.buttons}>
-                <RaisedButton label="Approve" style={styles.approveButton} type="button" primary={true} />
-                <RaisedButton label="Reject" style={styles.cancelButton} type="button" secondary={true} />
+                <RaisedButton label="Approve" style={styles.approveButton} type="button" primary={true} onClick={() => handleApprove(OrderId)} />
+                <RaisedButton label="Reject" style={styles.cancelButton} type="button" secondary={true} onClick={() => handleReject(OrderId)} />
                 <RaisedButton label="Cancel" onClick={handleCancel} />
             </div>
         </form>
@@ -35,10 +37,10 @@ let OrderEditForm = (props) => {
 };
   
 OrderEditForm.propTypes = {
-
-    handleSubmit: PropTypes.func,
+    handleApprove: PropTypes.func,
+    handleReject: PropTypes.func,
     handleCancel: PropTypes.func,
-    Id: PropTypes.string,
+    OrderId: PropTypes.number,
 };
 
 OrderEditForm = reduxForm({
