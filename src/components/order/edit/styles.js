@@ -48,6 +48,32 @@ const styles = {
   cancelButton: {
     marginLeft: 5,
     marginRight: 5
+  },
+  orderDetail: {
+    fontSize: 24,
+    fontWeight: 300,
+    marginBottom: 20,
+    marginTop: 20
+  },
+  products: {
+    id: {
+      width: '5%'
+    },
+    code: {
+      width: '15%'
+    },
+    name: {
+      width: '40%'
+    },
+    price: {
+      width: '10%'
+    },
+    category: {
+      width: '20%'
+    },
+    edit: {
+      width: '10%'
+    }
   }
 };
 
