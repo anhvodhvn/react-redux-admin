@@ -77,7 +77,7 @@ const mapStateToProps = (props) => ({
     initialValues: { 
         ...props.orderReducer.orderItem,
         MerchantInformation: props.orderReducer.orderItem.Merchant ? 
-            (props.orderReducer.orderItem.Merchant.FullName + ', ' + props.orderReducer.orderItem.Merchant.Club) : '',
+            (props.orderReducer.orderItem.Merchant.FullName + ', ' + (props.orderReducer.orderItem.Merchant.Club || props.orderReducer.orderItem.Merchant.Position)) : '',
         TotalPrice: (props.orderReducer.orderItem.Total && props.orderReducer.orderItem.Currency) ? 
             (props.orderReducer.orderItem.Total + ` (${(props.orderReducer.orderItem.Currency)})`) : '',
         Reason: props.orderReducer.orderItem.Rejection ? props.orderReducer.orderItem.Rejection.Reason : ''
