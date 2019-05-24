@@ -6,10 +6,14 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { TextField } from 'redux-form-material-ui';
 import ProductList from './list';
 
+import ErrorMessage from '../../../base/errorMessage';
+
 import styles from '../styles';
 
+import CONSTANTS from '../../../../utils/constants';
+
 let OrderEditForm = (props) => {
-    let { handleApprove, handleReject, handleCancel, OrderId, Products } = props;
+    let { error, submitting, onSubmit, handleSubmit, handleCancel, OrderId, OrderStatus, Products } = props;
     return (
         <form>
             <Field name="OrderId" component={TextField} hintText="Order Id" floatingLabelText="Order Id" fullWidth={true} disabled={true}/>
@@ -24,22 +28,39 @@ let OrderEditForm = (props) => {
 
             <Field name="Status" component={TextField} hintText="Order Status" floatingLabelText="Order Status" fullWidth={true} readOnly={true}/>
 
-            <Field name="Description" component={TextField} hintText="Description" floatingLabelText="Description" fullWidth={true} readOnly={true}/>
+            <Field name="Description" component={TextField} hintText="Description" floatingLabelText="Description" fullWidth={true} readOnly={true} />
+
+            <Field name="Reason" component={TextField} hintText="Rejected order's reason" floatingLabelText="Rejected order's reason" fullWidth={true} />
+
+            { error ? <ErrorMessage errorMessage={error} /> : null }
 
             <div style={styles.buttons}>
-                <RaisedButton label="Approve" style={styles.approveButton} type="button" primary={true} onClick={() => handleApprove(OrderId)} />
-                <RaisedButton label="Reject" style={styles.cancelButton} type="button" secondary={true} onClick={() => handleReject(OrderId)} />
-                <RaisedButton label="Cancel" onClick={handleCancel} />
+                {
+                    (OrderStatus == CONSTANTS.ORDER_STATUS.PENDING)
+                        ? <RaisedButton label="Approve" style={styles.approveButton} type="button" primary={true} disabled={submitting} 
+                                        onClick={handleSubmit(() => onSubmit({ orderId: OrderId, orderStatus: CONSTANTS.ORDER_STATUS.APPROVED }))} /> 
+                        : null
+                }
+                {
+                    (OrderStatus == CONSTANTS.ORDER_STATUS.PENDING)
+                        ? <RaisedButton label="Reject" style={styles.cancelButton} type="button" secondary={true} disabled={submitting} 
+                                        onClick={handleSubmit((values) => onSubmit({ orderId: OrderId, orderStatus: CONSTANTS.ORDER_STATUS.REJECTED, reason: values.Reason }))} /> 
+                        : null
+                }
+                <RaisedButton label="Cancel" onClick={handleCancel} disabled={submitting} />
             </div>
         </form>
     );
 };
   
 OrderEditForm.propTypes = {
-    handleApprove: PropTypes.func,
-    handleReject: PropTypes.func,
+    error: PropTypes.string,
+    submitting: PropTypes.bool,
+    onSubmit: PropTypes.func,
+    handleSubmit: PropTypes.func,
     handleCancel: PropTypes.func,
     OrderId: PropTypes.number,
+    OrderStatus: PropTypes.string,
     Products: PropTypes.array,
 };
 
@@ -54,7 +75,8 @@ const mapStateToProps = (props) => ({
         MerchantInformation: props.orderReducer.orderItem.Merchant ? 
             (props.orderReducer.orderItem.Merchant.FullName + ', ' + props.orderReducer.orderItem.Merchant.Club) : '',
         TotalPrice: (props.orderReducer.orderItem.Total && props.orderReducer.orderItem.Currency) ? 
-            (props.orderReducer.orderItem.Total + ` (${(props.orderReducer.orderItem.Currency)})`) : ''
+            (props.orderReducer.orderItem.Total + ` (${(props.orderReducer.orderItem.Currency)})`) : '',
+        Reason: props.orderReducer.orderItem.Rejection ? props.orderReducer.orderItem.Rejection.Reason : ''
     },
 });
 

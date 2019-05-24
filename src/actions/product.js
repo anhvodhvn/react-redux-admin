@@ -11,6 +11,7 @@ export const getProductList = function() {
                 type: GET_PRODUCT_LIST, 
                 payload: products 
             });
+            return res;
         })
         .catch((err) => {
             throw err;
@@ -27,7 +28,7 @@ export const getProductItem = function(id) {
                 type: GET_PRODUCT_ITEM, 
                 payload: product
             });
-            return res.data;
+            return res;
         })
         .catch((err) => {
             throw err;

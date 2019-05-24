@@ -31,6 +31,23 @@ const CONSTANTS = {
     CREATE_ORDER: 'CREATE_ORDER',
     UPDATE_ORDER: 'UPDATE_ORDER',
 
+    APPROVE_ORDER: 'APPROVE_ORDER',
+    REJECT_ORDER: 'REJECT_ORDER',
+
+
+
+    ORDER_STATUS: {
+        PENDING: 'PENDING',
+        APPROVED: 'APPROVED',
+        REJECTED: 'REJECTED',
+        RECEIVED: 'RECEIVED',
+        FINISHED: 'FINISHED',
+    },
+
+    CURRENCY: {
+        USD: 'USD',
+        VND: 'VND'
+    },
 
     /* array list */
     CATEGORY: [
