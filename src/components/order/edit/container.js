@@ -35,12 +35,13 @@ class OrderEdit extends Component {
     }
 
     render() {
-        let { order: { OrderId, ProductList } } = this.props;
+        let { order: { OrderId, Status, ProductList } } = this.props;
         return (
             <OrderEditForm  handleCancel={this.handleCancel}
                             handleApprove={this.handleApprove}
                             handleReject={this.handleReject}
                             OrderId={OrderId}
+                            OrderStatus={Status}
                             Products={ProductList} />
         );
     }

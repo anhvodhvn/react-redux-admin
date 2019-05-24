@@ -8,8 +8,10 @@ import ProductList from './list';
 
 import styles from '../styles';
 
+import CONSTANTS from '../../../../utils/constants';
+
 let OrderEditForm = (props) => {
-    let { handleApprove, handleReject, handleCancel, OrderId, Products } = props;
+    let { handleApprove, handleReject, handleCancel, OrderId, OrderStatus, Products } = props;
     return (
         <form>
             <Field name="OrderId" component={TextField} hintText="Order Id" floatingLabelText="Order Id" fullWidth={true} readOnly={true}/>
@@ -27,8 +29,16 @@ let OrderEditForm = (props) => {
             <Field name="Description" component={TextField} hintText="Description" floatingLabelText="Description" fullWidth={true} readOnly={true}/>
 
             <div style={styles.buttons}>
-                <RaisedButton label="Approve" style={styles.approveButton} type="button" primary={true} onClick={() => handleApprove(OrderId)} />
-                <RaisedButton label="Reject" style={styles.cancelButton} type="button" secondary={true} onClick={() => handleReject(OrderId)} />
+                {
+                    (OrderStatus == CONSTANTS.ORDER_STATUS.PENDING)
+                        ? <RaisedButton label="Approve" style={styles.approveButton} type="button" primary={true} onClick={() => handleApprove(OrderId)} /> 
+                        : null
+                }
+                {
+                    (OrderStatus == CONSTANTS.ORDER_STATUS.PENDING)
+                        ? <RaisedButton label="Reject" style={styles.cancelButton} type="button" secondary={true} onClick={() => handleReject(OrderId)} /> 
+                        : null
+                }
                 <RaisedButton label="Cancel" onClick={handleCancel} />
             </div>
         </form>
@@ -40,6 +50,7 @@ OrderEditForm.propTypes = {
     handleReject: PropTypes.func,
     handleCancel: PropTypes.func,
     OrderId: PropTypes.number,
+    OrderStatus: PropTypes.string,
     Products: PropTypes.array,
 };
 
