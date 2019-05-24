@@ -30,7 +30,11 @@ let OrderEditForm = (props) => {
 
             <Field name="Description" component={TextField} hintText="Description" floatingLabelText="Description" fullWidth={true} readOnly={true} />
 
-            <Field name="Reason" component={TextField} hintText="Rejected order's reason" floatingLabelText="Rejected order's reason" fullWidth={true} />
+            {
+                ([CONSTANTS.ORDER_STATUS.PENDING, CONSTANTS.ORDER_STATUS.REJECTED].indexOf(OrderStatus) >= 0)
+                ? <Field name="Reason" component={TextField} hintText="Rejected order's reason" floatingLabelText="Rejected order's reason" fullWidth={true} />
+                : null
+            }
 
             { error ? <ErrorMessage errorMessage={error} /> : null }
 
