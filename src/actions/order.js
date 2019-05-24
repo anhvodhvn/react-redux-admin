@@ -52,9 +52,9 @@ export const approveOrder = (orderId) => {
     };
 };
 
-export const rejectOrder = (orderId) => {
+export const rejectOrder = (orderId, reason) => {
     return (dispatch) => {
-        return api.put('/order/reject', {orderId})
+        return api.put('/order/reject', {orderId, reason})
         .then((res) => {
             let { order } = res.data;
             dispatch({

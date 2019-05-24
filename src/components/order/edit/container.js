@@ -45,9 +45,9 @@ class OrderEdit extends Component {
         });
     }
 
-    handleReject(orderId) {
+    handleReject(orderId, reason) {
         let { rejectOrder } = this.props;
-        return rejectOrder(orderId)
+        return rejectOrder(orderId, reason)
         .then((res) => {
             if (res.status == 200) browserHistory.push('/order');
         })
@@ -61,9 +61,9 @@ class OrderEdit extends Component {
     }
 
     handleSubmit(values) {
-        let { orderId, orderStatus } = values;
+        let { orderId, orderStatus, reason } = values;
         if(orderStatus == CONSTANTS.ORDER_STATUS.APPROVED) return this.handleApprove(orderId);
-        else if(orderStatus == CONSTANTS.ORDER_STATUS.REJECTED) return this.handleReject(orderId);
+        else if(orderStatus == CONSTANTS.ORDER_STATUS.REJECTED) return this.handleReject(orderId, reason);
     }
 
     render() {

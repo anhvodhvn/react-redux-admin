@@ -28,7 +28,9 @@ let OrderEditForm = (props) => {
 
             <Field name="Status" component={TextField} hintText="Order Status" floatingLabelText="Order Status" fullWidth={true} readOnly={true}/>
 
-            <Field name="Description" component={TextField} hintText="Description" floatingLabelText="Description" fullWidth={true} />
+            <Field name="Description" component={TextField} hintText="Description" floatingLabelText="Description" fullWidth={true} readOnly={true} />
+
+            <Field name="Reason" component={TextField} hintText="Reason" floatingLabelText="Reason" fullWidth={true} />
 
             { error ? <ErrorMessage errorMessage={error} /> : null }
 
@@ -42,7 +44,7 @@ let OrderEditForm = (props) => {
                 {
                     (OrderStatus == CONSTANTS.ORDER_STATUS.PENDING)
                         ? <RaisedButton label="Reject" style={styles.cancelButton} type="button" secondary={true} disabled={submitting} 
-                                        onClick={handleSubmit(() => onSubmit({ orderId: OrderId, orderStatus: CONSTANTS.ORDER_STATUS.REJECTED }))} /> 
+                                        onClick={handleSubmit((values) => onSubmit({ orderId: OrderId, orderStatus: CONSTANTS.ORDER_STATUS.REJECTED, reason: values.Reason }))} /> 
                         : null
                 }
                 <RaisedButton label="Cancel" onClick={handleCancel} disabled={submitting} />
