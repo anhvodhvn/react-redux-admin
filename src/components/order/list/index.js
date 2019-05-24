@@ -32,7 +32,7 @@ const OrderList = (props) => {
                         <TableRow key={index+1}>
                             <TableRowColumn style={styles.columns.id}>{index+1}</TableRowColumn>
                             <TableRowColumn style={styles.columns.code}>{item.OrderId}</TableRowColumn>
-                            <TableRowColumn style={styles.columns.name}>{item.Merchant.FullName + ' from ' + item.Merchant.Club}</TableRowColumn>
+                            <TableRowColumn style={styles.columns.name}>{item.Merchant.FullName + ', ' + (item.Merchant.Club || item.Merchant.Position)}</TableRowColumn>
                             <TableRowColumn style={styles.columns.status}>{item.Status}</TableRowColumn>
                             <TableRowColumn style={styles.columns.total}>{item.Total + ` (${(item.Currency)})`}</TableRowColumn>
                             <TableRowColumn style={styles.columns.edit}>
