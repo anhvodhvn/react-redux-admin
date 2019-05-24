@@ -9,6 +9,7 @@ import OrderEditForm from './form';
 import { loading } from '../../../actions/loading';
 import { getOrderItem, approveOrder, rejectOrder } from '../../../actions/order';
 import utils from '../../../utils/utils';
+import CONSTANTS from '../../../utils/constants';
 
 class OrderEdit extends Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class OrderEdit extends Component {
         this.handleCancel = this.handleCancel.bind(this);
         this.handleApprove = this.handleApprove.bind(this);
         this.handleReject = this.handleReject.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -58,12 +60,17 @@ class OrderEdit extends Component {
         });
     }
 
+    handleSubmit(values) {
+        let { orderId, orderStatus } = values;
+        if(orderStatus == CONSTANTS.ORDER_STATUS.APPROVED) return this.handleApprove(orderId);
+        else if(orderStatus == CONSTANTS.ORDER_STATUS.REJECTED) return this.handleReject(orderId);
+    }
+
     render() {
         let { order: { OrderId, Status, ProductList } } = this.props;
         return (
-            <OrderEditForm  handleCancel={this.handleCancel}
-                            handleApprove={this.handleApprove}
-                            handleReject={this.handleReject}
+            <OrderEditForm  onSubmit={this.handleSubmit}
+                            handleCancel={this.handleCancel}
                             OrderId={OrderId}
                             OrderStatus={Status}
                             Products={ProductList} />
