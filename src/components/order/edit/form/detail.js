@@ -30,7 +30,7 @@ let OrderEditForm = (props) => {
 
             <Field name="Description" component={TextField} hintText="Description" floatingLabelText="Description" fullWidth={true} readOnly={true} />
 
-            <Field name="Reason" component={TextField} hintText="Reason" floatingLabelText="Reason" fullWidth={true} />
+            <Field name="Reason" component={TextField} hintText="Rejected order's reason" floatingLabelText="Rejected order's reason" fullWidth={true} />
 
             { error ? <ErrorMessage errorMessage={error} /> : null }
 
