@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
 
+import { SubmissionError } from 'redux-form';
 import OrderEditForm from './form';
 
 import { loading } from '../../../actions/loading';
-import { getOrderItem } from '../../../actions/order';
+import { getOrderItem, approveOrder, rejectOrder } from '../../../actions/order';
+import utils from '../../../utils/utils';
 
 class OrderEdit extends Component {
     constructor(props) {
@@ -27,11 +29,33 @@ class OrderEdit extends Component {
     }
 
     handleApprove(orderId) {
-        alert(`- approve orderId: ${orderId}`);
+        let { approveOrder } = this.props;
+        return approveOrder(orderId)
+        .then((res) => {
+            if (res.status == 200) browserHistory.push('/order');
+        })
+        .catch(err => {
+            let { response } = err;
+            throw new SubmissionError({
+                code: response.status,
+                _error: utils.handleErrorMessage(response)
+            });
+        });
     }
 
     handleReject(orderId) {
-        alert(`- reject orderId: ${orderId}`);
+        let { rejectOrder } = this.props;
+        return rejectOrder(orderId)
+        .then((res) => {
+            if (res.status == 200) browserHistory.push('/order');
+        })
+        .catch(err => {
+            let { response } = err;
+            throw new SubmissionError({
+                code: response.status,
+                _error: utils.handleErrorMessage(response)
+            });
+        });
     }
 
     render() {
@@ -51,7 +75,9 @@ OrderEdit.propTypes = {
     id: PropTypes.string,
     order: PropTypes.object,
     loading: PropTypes.func,
-    getOrderItem: PropTypes.func
+    getOrderItem: PropTypes.func,
+    approveOrder: PropTypes.func,
+    rejectOrder: PropTypes.func,
 };
 
 const mapStateToProps = state => {
@@ -64,7 +90,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => (
     bindActionCreators({
         loading,
-        getOrderItem
+        getOrderItem,
+        approveOrder,
+        rejectOrder
     }, dispatch)
 );
 

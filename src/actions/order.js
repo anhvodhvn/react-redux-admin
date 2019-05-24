@@ -37,7 +37,7 @@ export const getOrderItem = function(id) {
 
 export const approveOrder = (orderId) => {
     return (dispatch) => {
-        return api.post('/order/approve', {orderId})
+        return api.put('/order/approve', {orderId})
         .then((res) => {
             let { order } = res.data;
             dispatch({
