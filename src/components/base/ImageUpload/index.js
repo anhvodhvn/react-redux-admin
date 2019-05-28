@@ -16,7 +16,7 @@ const uploadImage = function(selectedFile, productId){
   });
 };
 
-// https://codepen.io/hartzis/pen/VvNGZP
+/* https://codepen.io/hartzis/pen/VvNGZP */
 class ImageUpload extends Component {
   constructor(props) {
     super(props);
@@ -25,9 +25,6 @@ class ImageUpload extends Component {
   
   _handleSubmitImage() {
     //e.preventDefault();
-    //TODO: do something with -> this.state.file
-    //console.log('handle uploading-', this.state.file);
-
     let { productId, loading } = this.props;
     let selectedFile = this.state.file;
     loading(() => uploadImage(selectedFile, productId));
