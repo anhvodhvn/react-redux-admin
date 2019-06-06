@@ -6,7 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { TextField } from 'redux-form-material-ui';
 import ProductList from './list';
 
-import ErrorMessage from '../../../base/errorMessage';
+import ErrorMessage from '../../../base/ErrorMessage';
 
 import styles from '../styles';
 
