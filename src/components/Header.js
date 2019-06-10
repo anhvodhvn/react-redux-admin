@@ -51,9 +51,9 @@ class Header extends React.Component {
                             targetOrigin={{horizontal: 'right', vertical: 'top'}}
                             anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                   >
-                    <MenuItem key={1} primaryText="Application 1"/>
-                    <MenuItem key={2} primaryText="Application 2"/>
-                    <MenuItem key={3} primaryText="Application 3"/>
+                    <MenuItem key={1} primaryText="Dashboard" containerElement={<Link to="/dashboard"/>}/>
+                    <MenuItem key={2} primaryText="Product" containerElement={<Link to="/product"/>}/>
+                    <MenuItem key={3} primaryText="Order" containerElement={<Link to="/order"/>}/>
                   </IconMenu>
                   <IconMenu color={white}
                             iconButtonElement={
