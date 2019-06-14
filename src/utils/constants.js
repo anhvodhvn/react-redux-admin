@@ -99,7 +99,7 @@ const CONSTANTS = {
         {
             Id: 10,
             Code: 10,
-            Name: 'Car'
+            Name: 'Car & Bus'
         }
     ],
     LOCATION: [
