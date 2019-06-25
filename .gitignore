@@ -30,7 +30,7 @@ build/Release
 node_modules
 
 #dist folder
-dist
+#dist
 
 #Webstorm metadata
 .idea
