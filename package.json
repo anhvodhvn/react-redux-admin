@@ -3,6 +3,7 @@
   "version": "1.0.3",
   "description": "Admin template using React and Material-UI",
   "engines": {
+    "node": ">=8.11.1",
     "npm": ">=3"
   },
   "scripts": {
