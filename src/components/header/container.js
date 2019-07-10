@@ -8,7 +8,7 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import Menu from 'material-ui/svg-icons/navigation/menu';
 import ViewModule from 'material-ui/svg-icons/action/view-module';
 import {white} from 'material-ui/styles/colors';
-import SearchBox from '../SearchBox';
+import SearchBox from '../searchBox';
 
 const style = {
     appBar: {
