@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Header from '../components/Header';
+import Header from '../components/header';
 import LeftDrawer from '../components/LeftDrawer';
 import withWidth, {LARGE, SMALL} from 'material-ui/utils/withWidth';
 import ThemeDefault from '../theme-default';
