@@ -1,6 +1,6 @@
 {
   "name": "react-material-admin-template",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Admin template using React and Material-UI",
   "engines": {
     "node": ">=8.11.1",
