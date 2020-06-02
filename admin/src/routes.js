@@ -12,9 +12,9 @@ import OrderEditPage from './containers/OrderEditPage';
 import Dashboard from './containers/DashboardPage';
 
 export default (
-  <Route>
-    <Route path="login" component={LoginPage}/>
-    <Route path="/" component={App}>
+  <Route path="/">
+    <Route path="/login" component={LoginPage}/>
+    <Route path="/work" component={App}>
       <IndexRoute component={Dashboard}/>
       <Route path="dashboard" component={Dashboard}/>
       <Route path="form" component={FormPage}/>
