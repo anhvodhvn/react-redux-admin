@@ -1,19 +1,19 @@
 {
-  "name": "app-pwa",
-  "version": "2.4.7",
-  "description": "app pwa",
+  "name": "demo-inventory",
+  "version": "1.0.7",
+  "description": "demo-inventory",
   "main": "app.js",
   "author": "voduyanh1984@gmail.com",
-  "license": "ISC",
+  "license": "ISC",  
   "engines": {
-    "node": "^8.11.1"
+    "node": "^12.15.0",
+    "npm": ">=3"
   },
   "scripts": {
     "start": "node app",
-    "dev": "cd pwa && npm run build && cd .. && node app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "http://devinsg.github.io/app-pwa",
+  "homepage": "http://devinsg.github.io/react-material-admin",
   "dependencies": {
     "axios": "0.19.2",
     "body-parser": "1.19.0",
