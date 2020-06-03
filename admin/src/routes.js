@@ -12,7 +12,7 @@ import OrderEditPage from './containers/OrderEditPage';
 import Dashboard from './containers/DashboardPage';
 
 export default (
-  <Route path="/">
+  <Route>
     <Route path="/login" component={LoginPage}/>
     <Route path="/work" component={App}>
       <IndexRoute component={Dashboard}/>
