@@ -1,10 +1,10 @@
 {
-  "name": "demo-inventory",
-  "version": "1.0.7",
-  "description": "demo-inventory",
+  "name": "react-material-admin",
+  "version": "1.0.8",
+  "description": "react-material-admin",
   "main": "app.js",
   "author": "voduyanh1984@gmail.com",
-  "license": "ISC",  
+  "license": "ISC",
   "engines": {
     "node": "^12.15.0",
     "npm": ">=3"
@@ -15,15 +15,7 @@
   },
   "homepage": "http://devinsg.github.io/react-material-admin",
   "dependencies": {
-    "axios": "0.19.2",
-    "body-parser": "1.19.0",
-    "dotenv": "^8.2.0",
     "express": "4.17.1",
-    "http-proxy-middleware": "^1.0.3",
     "path": "0.12.7"
-  },
-  "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^7.1.2"
   }
 }
