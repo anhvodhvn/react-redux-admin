@@ -40,3 +40,5 @@ node_modules
 
 # Mac files
 .DS_Store
+
+src/services/fnc.js
