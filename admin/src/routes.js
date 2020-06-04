@@ -13,7 +13,7 @@ import Dashboard from './containers/DashboardPage';
 
 export default (
   <Route>
-    <Route path="/login" component={LoginPage}/>
+    <Route path="login" component={LoginPage}/>
     <Route path="/" component={App}>
       <IndexRoute component={Dashboard}/>
       <Route path="dashboard" component={Dashboard}/>
