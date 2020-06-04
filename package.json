@@ -6,7 +6,7 @@
   "author": "voduyanh1984@gmail.com",
   "license": "ISC",
   "engines": {
-    "node": ">=8.11.1",
+    "node": "^12.15.0",
     "npm": ">=3"
   },
   "scripts": {
