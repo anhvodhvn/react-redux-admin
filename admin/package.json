@@ -1,13 +1,13 @@
 {
-  "name": "react-material-admin-template",
-  "version": "1.0.8",
+  "name": "react-material-admin",
+  "version": "1.0.9",
   "description": "Admin template using React and Material-UI",
   "engines": {
     "node": ">=8.11.1",
     "npm": ">=3"
   },
   "scripts": {
-    "start": "node app.js",
+    "start": "npm run open:dist",
     "develop": "npm-run-all --parallel test:watch open:src lint:watch",
     "open:src": "babel-node tools/srcServer.js",
     "open:dist": "babel-node tools/distServer.js",
