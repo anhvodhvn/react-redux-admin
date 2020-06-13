@@ -1,4 +1,4 @@
-Demo Inventory
+Demo User Profile
 
 License
 -------
