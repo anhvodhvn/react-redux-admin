@@ -1,4 +1,7 @@
-Demo User Profile
+# Demo Sale
+- User Profile
+- Order Management
+- Product Management
 
 License
 -------
