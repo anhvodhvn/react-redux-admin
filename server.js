@@ -11,7 +11,9 @@ server.use('/api/status', (req, res, next) => {
     });
 });
 
-const dist = path.join(__dirname, './admin/dist');
-server.use('/', express.static(dist, { index: 'index.html' }));
+server.use('/', express.static(path.join(__dirname, 'admin/dist'), { index: 'index.html' }));
+app.get(['/', '/*'], function(req, res) {
+    res.sendFile(path.join(__dirname, 'admin/dist', 'index.html'));
+  });
 
 module.exports = server;
