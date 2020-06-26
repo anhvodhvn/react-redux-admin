@@ -1,31 +1,33 @@
 # Demo Sale System:
 - User Profile
-- Order Management
+- Employee Management
 - Product Management
+- Order Management
+
 
 # docker setup: 
-- build image:
+
+# build image:
 docker build -t admin/node-demo-sale .
 
-- attach to container:
+# attach to container:
 docker run -p 8081:8080 -d admin/node-demo-sale
 
-- print app output
+# print app output
 docker logs [containerid]
 
-- enter the container
+# enter the container
 docker exec -it <container id> /bin/bash
 
-- get data
+# get data
 curl -i localhost:8081
 
-- other commands:
+# other commands:
 docker ps -a 
 
 docker stop [containerid]
 
 docker rm [containerid]
-
 
 docker images -a
 
