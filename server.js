@@ -12,7 +12,7 @@ server.use('/api/status', (req, res, next) => {
 });
 
 server.use('/', express.static(path.join(__dirname, 'admin/dist'), { index: 'index.html' }));
-app.get(['/', '/*'], function(req, res) {
+server.get(['/', '/*'], function(req, res) {
     res.sendFile(path.join(__dirname, 'admin/dist', 'index.html'));
   });
 
