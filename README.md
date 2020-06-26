@@ -8,7 +8,7 @@
 docker build -t admin/node-demo-sale .
 
 - attach to container:
-docker run -p 8080:8080 -d admin/node-demo-sale
+docker run -p 8081:8080 -d admin/node-demo-sale
 
 - print app output
 docker logs [containerid]
@@ -17,7 +17,7 @@ docker logs [containerid]
 docker exec -it <container id> /bin/bash
 
 - get data
-curl -i localhost:8080
+curl -i localhost:8081
 
 - other commands:
 docker ps -a 

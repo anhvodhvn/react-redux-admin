@@ -1,8 +1,12 @@
 const http = require('http');
 const server = require('./server');
 
-const port = process.env.PORT || 8080;
-http.createServer(server).listen(port, function () {
+const PORT = 8080;
+const HOST = '0.0.0.0';
+
+const port = process.env.PORT || PORT;
+const host = process.env.HOST || HOST;
+http.createServer(server).listen(port, host, function () {
     // eslint-disable-next-line no-console
-    console.log('Sale System is running on port:' + port);
+    console.log(`Sale System is running on port: ${port} at ${host}`);
 });
