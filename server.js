@@ -12,6 +12,6 @@ server.use('/api/status', (req, res, next) => {
 });
 
 const dist = path.join(__dirname, './admin/dist');
-server.use(['/', '*'], express.static(dist, { index: 'index.html' }));
+server.use('/', express.static(dist, { index: 'index.html' }));
 
 module.exports = server;
