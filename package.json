@@ -1,10 +1,10 @@
 {
   "name": "react-material-admin",
-  "version": "1.0.8",
   "description": "react-material-admin",
-  "main": "app.js",
+  "version": "1.0.8",
   "author": "voduyanh1984@gmail.com",
   "license": "ISC",
+  "main": "app.js",
   "engines": {
     "node": "^8.11.1",
     "npm": ">=3"
