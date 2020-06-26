@@ -1,8 +1,9 @@
 {
-  "name": "react-material-admin",
-  "description": "react-material-admin",
+  "name": "react-sale-system",
+  "description": "react-sale-system",
   "version": "1.0.8",
-  "author": "voduyanh1984@gmail.com",
+  "author": "voduyanh1984",
+  "email": "voduyanh1984@gmail.com",
   "license": "ISC",
   "main": "app.js",
   "engines": {
