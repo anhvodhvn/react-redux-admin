@@ -1,7 +1,9 @@
 # Demo Sale System:
 - User Profile
-- Order Management
+- Employee Management
 - Product Management
+- Order Management
+
 
 # docker setup: 
 - build image:
