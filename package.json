@@ -10,12 +10,16 @@
     "npm": ">=3"
   },
   "scripts": {
+    "develop": "npx nodemon",
     "start": "node app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "http://devinsg.github.io/react-material-admin",
+  "homepage": ".",
   "dependencies": {
     "express": "4.17.1",
     "path": "0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
