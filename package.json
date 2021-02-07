@@ -2,9 +2,9 @@
   "name": "react-sale-system",
   "description": "react-sale-system",
   "version": "1.0.8",
-  "author": "voduyanh1984",
-  "email": "voduyanh1984@gmail.com",
-  "license": "ISC",
+  "author": "devinsg",
+  "email": "duyanh2005@gmail.com",
+  "license": "MIT",
   "main": "app.js",
   "engines": {
     "node": "^8.11.1",
